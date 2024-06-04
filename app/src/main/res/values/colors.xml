@@ -2,4 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="teal">#0B8FAC</color>
+    <color name="argent">#888888</color>
+    <color name="nightRider">#323232</color>
 </resources>
