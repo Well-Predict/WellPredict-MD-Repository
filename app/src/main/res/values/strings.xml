@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Capstone Bangkit</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_diagnose">Diagnose</string>
+    <string name="title_profile">Profile</string>
+    <string name="news_title">The Washington Post</string>
+    <string name="news_description">Injecting fentanyl is dangerous. Should users be encouraged to smoke it?</string>
+    <string name="news_background">News Background</string>
+    <string name="news_section_title">News</string>
+    <string name="diagnose_description">Identify potential causes of your health symptoms based on what you’re experiencing</string>
+    <string name="diagnose_title">Diagnose your symptoms</string>
+    <string name="check_now_button">Check Now</string>
+    <string name="greetings_description">Hope you’re doing good!</string>
+    <string name="greetings_title">Hey, Rifqi</string>
+    <string name="header_background">Header Background</string>
+    <string name="logo_image">Logo Image</string>
+    <string name="news_see_all">See All</string>
+    <string name="time_icon">Time Icon</string>
+    <string name="news_time">10h ago</string>
+    <string name="diagnose_history_title">Headache</string>
+    <string name="diagnose_history_date">Yesterday, 12 May 2024</string>
+    <string name="diagnose_history_section_title">Diagnose History</string>
 </resources>
