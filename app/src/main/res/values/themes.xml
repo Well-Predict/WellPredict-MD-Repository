@@ -1,29 +1,47 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.CapstoneBangkit" parent="Theme.Material3.DayNight">
         <!-- Customize your light theme here. -->
         <item name="android:windowNoTitle">true</item>
         <item name="colorPrimaryDark">@color/teal</item>
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="android:colorBackground">@color/white</item>
     </style>
 
     <style name="TextContent">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/argent</item>
     </style>
 
     <style name="TextContent.Bold">
         <item name="fontFamily">@font/poppins_bold</item>
-
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="TextContent.Medium">
         <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="TextContent.SemiBold">
         <item name="fontFamily">@font/poppins_semibold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+<!--  News Activity Theme   -->
+    <style name="Theme.NewsActivity" parent="Base.Theme.CapstoneBangkit">
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="background">@color/white</item>
+    </style>
+<!--Bottom Navigation Style-->
+    <style name="BottomNavigationStyle" parent="Widget.Design.BottomNavigationView">
+        <item name="backgroundTint">@color/white</item>
+        <item name="itemTextAppearanceInactive">@color/black</item>
+        <item name="itemBackground">@drawable/bg_bottom_nav_item</item>
+        <item name="itemIconTint">@drawable/nav_item_color</item>
+        <item name="itemTextColor">@drawable/nav_item_color</item>
     </style>
 
     <style name="Theme.CapstoneBangkit" parent="Base.Theme.CapstoneBangkit" />

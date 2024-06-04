@@ -21,4 +21,5 @@
     <string name="diagnose_history_title">Headache</string>
     <string name="diagnose_history_date">Yesterday, 12 May 2024</string>
     <string name="diagnose_history_section_title">Diagnose History</string>
+    <string name="icon_back">Icon Back</string>
 </resources>

@@ -3,11 +3,8 @@ package com.will.capstonebangkit.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.will.capstonebangkit.data.repository.NewsRepository
 
-class HomeViewModel : ViewModel() {
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
-    val text: LiveData<String> = _text
+class HomeViewModel(private val newsRepository: NewsRepository) : ViewModel() {
+    fun getNewsFirst() = newsRepository.getNewsFirst()
 }
