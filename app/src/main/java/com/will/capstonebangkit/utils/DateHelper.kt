@@ -16,7 +16,7 @@ class DateHelper {
             val currentTime = System.currentTimeMillis()
 
             // Menghitung selisih waktu
-            val timeDifferenceInMillis = abs(currentTime - givenDateTime.time)
+            val timeDifferenceInMillis = abs(currentTime - givenDateTime!!.time)
             val timeDifferenceInDays = timeDifferenceInMillis / (1000 * 60 * 60 * 24)
 
             // Menampilkan selisih waktu dalam format yang sesuai

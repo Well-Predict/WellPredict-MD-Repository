@@ -5,5 +5,5 @@ import com.will.capstonebangkit.data.repository.NewsRepository
 
 class NewsViewModel(private val newsRepository: NewsRepository) : ViewModel() {
 
-    fun getNewsList() = newsRepository.getFilteredNewsList()
+    fun getNewsList() = newsRepository.getNewsList()
 }

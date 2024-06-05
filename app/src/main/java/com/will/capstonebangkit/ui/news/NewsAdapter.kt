@@ -12,12 +12,12 @@ import com.will.capstonebangkit.databinding.ItemNewsBinding
 import com.will.capstonebangkit.utils.DateHelper
 
 class NewsAdapter : ListAdapter<ArticlesItem, NewsAdapter.MyViewHolder>(DIFF_CALLBACK) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsAdapter.MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding = ItemNewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: NewsAdapter.MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item)
         holder.itemView.setOnClickListener {
