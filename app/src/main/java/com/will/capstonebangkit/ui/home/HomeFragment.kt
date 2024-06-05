@@ -11,6 +11,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
+import com.facebook.shimmer.ShimmerFrameLayout
+import com.will.capstonebangkit.R
 import com.will.capstonebangkit.data.ResultState
 import com.will.capstonebangkit.databinding.FragmentHomeBinding
 import com.will.capstonebangkit.ui.ViewModelFactory
@@ -27,6 +29,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var shimmerFrameLayout : ShimmerFrameLayout
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,6 +40,8 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        shimmerFrameLayout = binding.cardViewShimmer
 
         setupNewsCard()
         seeAllOnClickHandler(NewsActivity::class.java)
@@ -53,10 +58,11 @@ class HomeFragment : Fragment() {
             if (result != null){
                 when (result) {
                     is ResultState.Loading -> {
-//                        lottieLoadingAnimation(true)
+                        showLoading(true, binding.newsCardView)
                     }
                     is ResultState.Success -> {
-//                        lottieLoadingAnimation(false)
+                        showLoading(false, binding.newsCardView)
+
                         binding.tvNewsAuthor.text = result.data.author
                         binding.tvNewsTitle.text = result.data.title
                         context?.let {
@@ -67,7 +73,7 @@ class HomeFragment : Fragment() {
                         newsCardOnClickHandler(result.data.url.toString())
                     }
                     is ResultState.Error -> {
-//                        lottieLoadingAnimation(false)
+                        showLoading(false, binding.newsCardView)
                         showAlert(result.error)
                     }
                 }
@@ -90,6 +96,18 @@ class HomeFragment : Fragment() {
             val intent = Intent(activity, NewsWebViewActivity::class.java)
             intent.putExtra("NEWS_URL", newsUrl)
             startActivity(intent)
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean, targetLayout: View) {
+        if (isLoading) {
+            targetLayout.visibility = View.INVISIBLE
+            shimmerFrameLayout.visibility = View.VISIBLE
+            shimmerFrameLayout.startShimmer()
+        } else {
+            shimmerFrameLayout.stopShimmer()
+            shimmerFrameLayout.visibility = View.GONE
+            targetLayout.visibility = View.VISIBLE
         }
     }
 
