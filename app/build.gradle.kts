@@ -57,7 +57,7 @@ dependencies {
     implementation(libs.logging.interceptor)
     implementation(libs.glide)
     implementation(libs.lottie)
-    implementation("com.facebook.shimmer:shimmer:0.5.0")
+    implementation(libs.shimmer)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -3,7 +3,6 @@ package com.will.capstonebangkit.ui.home
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.facebook.shimmer.ShimmerFrameLayout
-import com.will.capstonebangkit.R
 import com.will.capstonebangkit.data.ResultState
 import com.will.capstonebangkit.databinding.FragmentHomeBinding
 import com.will.capstonebangkit.ui.ViewModelFactory
@@ -84,10 +82,10 @@ class HomeFragment : Fragment() {
     private fun seeAllOnClickHandler(targetActivity: Class<out Activity>){
         val seeAllNewsTv = binding.tvNewsSeeAll
 
-        seeAllNewsTv.setOnClickListener(View.OnClickListener {
-            val intent = Intent( activity, targetActivity)
+        seeAllNewsTv.setOnClickListener {
+            val intent = Intent(activity, targetActivity)
             startActivity(intent)
-        })
+        }
     }
 
     private fun newsCardOnClickHandler(newsUrl: String) {
