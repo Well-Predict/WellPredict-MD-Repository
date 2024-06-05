@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Capstone Bangkit</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="app_name">Well Predict</string>
+    <string name="title_activity_main">Well Predict</string>
     <string name="title_home">Home</string>
     <string name="title_diagnose">Diagnose</string>
     <string name="title_profile">Profile</string>
@@ -22,4 +22,10 @@
     <string name="diagnose_history_date">Yesterday, 12 May 2024</string>
     <string name="diagnose_history_section_title">Diagnose History</string>
     <string name="icon_back">Icon Back</string>
+    <string name="search">Search</string>
+    <string name="day_date">13</string>
+    <string name="month_year_date">May 2024</string>
+    <string name="add_symptomps_title">Add your symptomps</string>
+    <string name="diagnose_button_title">Diagnose Your Symptomps</string>
+    <string name="add_symptoms">Add symptoms</string>
 </resources>

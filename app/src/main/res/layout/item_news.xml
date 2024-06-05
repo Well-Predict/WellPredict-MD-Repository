@@ -23,7 +23,7 @@
             android:layout_marginEnd="20dp"
             android:contentDescription="@string/news_background"
             android:scaleType="centerCrop"
-            android:src="@drawable/news_image"
+            android:src="@drawable/news_image_placeholder"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -69,7 +69,7 @@
                 android:gravity="center_vertical"
                 android:text="@string/news_time"
                 android:textSize="11sp"
-                app:drawableStartCompat="@drawable/baseline_access_time_24" />
+                app:drawableStartCompat="@drawable/ic_access_time_24" />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
