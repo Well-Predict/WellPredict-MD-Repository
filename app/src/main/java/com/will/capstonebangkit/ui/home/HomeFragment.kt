@@ -16,6 +16,7 @@ import com.will.capstonebangkit.databinding.FragmentHomeBinding
 import com.will.capstonebangkit.ui.ViewModelFactory
 import com.will.capstonebangkit.ui.news.NewsActivity
 import com.will.capstonebangkit.ui.news.NewsWebViewActivity
+import com.will.capstonebangkit.utils.DateHelper
 
 
 class HomeFragment : Fragment() {
@@ -61,8 +62,9 @@ class HomeFragment : Fragment() {
                     is ResultState.Success -> {
                         showLoading(false, binding.newsCardView)
 
-                        binding.tvNewsAuthor.text = result.data.author
+                        binding.tvNewsAuthor.text = result.data.source?.name
                         binding.tvNewsTitle.text = result.data.title
+                        binding.tvNewsUploadTime.text = DateHelper().convertTime(result.data.publishedAt.toString())
                         context?.let {
                             Glide.with(it)
                                 .load(result.data.urlToImage)

@@ -17,6 +17,21 @@ class NewsRepository(private val newsApiService: NewsApiService) {
         }
     }
 
+    fun getFilteredNewsList() = liveData(Dispatchers.IO) {
+        emit(ResultState.Loading)
+        try {
+            val successResponse = newsApiService.getNewsList()
+            val filteredArticles = successResponse.articles?.filter { it?.title != "removed" && it?.urlToImage != null }
+            if (filteredArticles != null) {
+                emit(ResultState.Success(filteredArticles))
+            } else {
+                emit(ResultState.Error("No articles found"))
+            }
+        } catch (e: Exception) {
+            emit(ResultState.Error(e.localizedMessage ?: "Unknown Error"))
+        }
+    }
+
     fun getNewsFirst() = liveData(Dispatchers.IO) {
         emit(ResultState.Loading)
         try {

@@ -1,37 +1,37 @@
 package com.will.capstonebangkit.utils
 
-import android.os.Build
-import androidx.annotation.RequiresApi
-import java.time.Instant
-import java.time.LocalDateTime
-import java.time.ZoneId
+import java.text.SimpleDateFormat
+import java.util.Locale
+import kotlin.math.abs
 
 class DateHelper {
+    fun convertTime(uploadTime: String): String {
+        val givenDateTimeFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
 
-//    // Format waktu dari API
-//    val apiTimeString = "2024-06-04T00:14:00Z"
-//
-//    // Zona waktu Indonesia
-//    @RequiresApi(Build.VERSION_CODES.O)
-//    val zoneId = ZoneId.of("Asia/Jakarta")
-//
-//    // Parsing waktu dari string ISO 8601
-//    @RequiresApi(Build.VERSION_CODES.O)
-//    val postingTime = Instant.parse(apiTimeString)
-//
-//    // Mengonversi waktu ke zona waktu Indonesia
-//    val postingTimeInIndonesia = LocalDateTime.ofInstant(postingTime, zoneId)
-//    println("Waktu posting di Indonesia: $postingTimeInIndonesia")
-//
-//    // Mendapatkan waktu saat ini di zona waktu Indonesia
-//    val currentTimeInIndonesia = LocalDateTime.now(zoneId)
-//    println("Waktu saat ini di Indonesia: $currentTimeInIndonesia")
-//
-//    // Menghitung selisih waktu
-//    val duration = Duration.between(postingTimeInIndonesia, currentTimeInIndonesia)
-//    val hours = duration.toHours()
-//    val minutes = duration.toMinutes() % 60
-//    val seconds = duration.seconds % 60
-//
-//    println("Selisih waktu: ${hours} jam, ${minutes} menit, ${seconds} detik")
+        try {
+            // Parse string ke objek Date
+            val givenDateTime = givenDateTimeFormat.parse(uploadTime)
+
+            // Mendapatkan waktu saat ini
+            val currentTime = System.currentTimeMillis()
+
+            // Menghitung selisih waktu
+            val timeDifferenceInMillis = abs(currentTime - givenDateTime.time)
+            val timeDifferenceInDays = timeDifferenceInMillis / (1000 * 60 * 60 * 24)
+
+            // Menampilkan selisih waktu dalam format yang sesuai
+            val formattedDifference = when {
+                timeDifferenceInDays < 1 -> {
+                    val hours = (timeDifferenceInMillis / (1000 * 60 * 60)) % 24
+                    "$hours hours ago"
+                }
+                timeDifferenceInDays == 1L -> "1 day ago"
+                else -> "$timeDifferenceInDays days ago"
+            }
+
+            return formattedDifference
+        } catch (e: Exception) {
+            return "Failed to convert date and time: ${e.message}"
+        }
+    }
 }

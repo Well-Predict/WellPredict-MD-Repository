@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.will.capstonebangkit.data.api.response.ArticlesItem
 import com.will.capstonebangkit.databinding.ItemNewsBinding
+import com.will.capstonebangkit.utils.DateHelper
 
 class NewsAdapter : ListAdapter<ArticlesItem, NewsAdapter.MyViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsAdapter.MyViewHolder {
@@ -33,6 +34,7 @@ class NewsAdapter : ListAdapter<ArticlesItem, NewsAdapter.MyViewHolder>(DIFF_CAL
                 .into(binding.ivNewsImage)
             binding.tvNewsAuthor.text = item.source?.name
             binding.tvNewsTitle.text = item.title
+            binding.tvNewsUploadTime.text = DateHelper().convertTime(item.publishedAt.toString())
         }
     }
 
