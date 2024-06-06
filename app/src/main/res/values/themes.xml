@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Base.Theme.CapstoneBangkit" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.CapstoneBangkit" parent="Theme.Material3.DayNight">
         <!-- Customize your light theme here. -->
         <item name="android:windowNoTitle">true</item>
         <item name="colorPrimaryDark">@color/teal</item>
@@ -15,19 +15,34 @@
         <item name="android:textColor">@color/argent</item>
     </style>
 
-    <style name="TextContent.Bold">
+    <style name="TextContent.Bold.Black">
         <item name="fontFamily">@font/poppins_bold</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="TextContent.Medium">
+    <style name="TextContent.Medium.Black">
         <item name="fontFamily">@font/poppins_medium</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="TextContent.SemiBold">
+    <style name="TextContent.SemiBold.Black">
         <item name="fontFamily">@font/poppins_semibold</item>
         <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextContent.Bold.White">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextContent.Medium.White">
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextContent.SemiBold.White">
+        <item name="fontFamily">@font/poppins_semibold</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
 <!--  News Activity Theme   -->

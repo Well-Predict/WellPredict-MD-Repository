@@ -17,6 +17,8 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.hide()
+
         binding.tvLoginRedirect.text =
             Html.fromHtml("<font color=${Color.WHITE}>Already have an account? </font>" + "<font color=#5AB2FF>Log In</font>", HtmlCompat.FROM_HTML_MODE_LEGACY)
 

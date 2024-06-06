@@ -28,4 +28,11 @@
     <string name="add_symptomps_title">Add your symptomps</string>
     <string name="diagnose_button_title">Diagnose Your Symptomps</string>
     <string name="add_symptoms">Add symptoms</string>
+    <string name="logout">Log-out</string>
+    <string name="email">E-mail</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="confirm_password">Confirm Password</string>
 </resources>

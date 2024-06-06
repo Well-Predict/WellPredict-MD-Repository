@@ -37,8 +37,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
-                android:text="Register"
+                style="@style/TextContent.Medium.Black"
+                android:text="@string/register"
                 android:textAlignment="center"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -58,8 +58,8 @@
                     android:id="@+id/etUsername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_regular"
-                    android:hint="Nama Lengkap" />
+                    style="@style/TextContent"
+                    android:hint="@string/nama_lengkap" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,8 +78,8 @@
                     android:id="@+id/etEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_regular"
-                    android:hint="E-mail"
+                    style="@style/TextContent"
+                    android:hint="@string/email"
                     android:inputType="textEmailAddress"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -100,8 +100,8 @@
                     android:id="@+id/etPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_regular"
-                    android:hint="Password"
+                    style="@style/TextContent"
+                    android:hint="@string/password"
                     android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -123,8 +123,8 @@
                     android:id="@+id/etConfirmPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_regular"
-                    android:hint="Confirm Password"
+                    style="@style/TextContent"
+                    android:hint="@string/confirm_password"
                     android:inputType="textPassword"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -134,8 +134,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="8dp"
-                android:fontFamily="@font/poppins_regular"
-                android:text="Register!"
+                style="@style/TextContent.Medium.White"
+                android:text="@string/register"
                 android:textSize="18sp"
                 app:cornerRadius="20dp" />
 
