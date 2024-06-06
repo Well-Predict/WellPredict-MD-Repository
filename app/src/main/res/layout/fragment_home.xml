@@ -68,17 +68,17 @@
                 android:id="@+id/diagnose_banner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="25dp"
                 android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@+id/header_background"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_margin="25dp">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/header_background">
 
                 <TextView
                     style="@style/TextContent.Bold"
                     android:text="@string/diagnose_title"
-                    android:textStyle="bold"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     style="@style/TextContent"
@@ -90,20 +90,20 @@
                     android:layout_width="140dp"
                     android:layout_height="48dp"
                     android:layout_marginTop="10dp"
-                    android:textSize="14sp"
-                    android:text="@string/check_now_button"
                     android:backgroundTint="@color/teal"
-                    android:textColor="@color/white"/>
+                    android:text="@string/check_now_button"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/news_section"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@+id/diagnose_banner"
+                android:layout_marginHorizontal="25dp"
                 android:layout_marginVertical="25dp"
-                android:layout_marginHorizontal="25dp">
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/diagnose_banner">
 
                 <TextView
                     android:id="@+id/news_section_title"
@@ -111,10 +111,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="start"
                     android:text="@string/news_section_title"
                     android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:gravity="start"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tv_news_see_all"
@@ -122,9 +122,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:clickable="true"
                     android:focusable="true"
                     android:gravity="end"
-                    android:clickable="true"
                     android:text="@string/news_see_all" />
 
             </LinearLayout>
@@ -170,11 +170,11 @@
                         android:id="@+id/news_card"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:gravity="center_vertical"
                         android:orientation="vertical"
                         android:padding="20dp"
-                        android:clickable="true"
-                        android:focusable="true"
                         app:layout_constraintBottom_toBottomOf="@id/iv_news_image"
                         app:layout_constraintEnd_toStartOf="@id/guideline"
                         app:layout_constraintStart_toStartOf="parent"
@@ -219,8 +219,7 @@
                 android:background="@drawable/bg_shimmer_effect"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/news_section">
-            </com.facebook.shimmer.ShimmerFrameLayout>
+                app:layout_constraintTop_toBottomOf="@id/news_section"></com.facebook.shimmer.ShimmerFrameLayout>
 
             <LinearLayout
                 android:id="@+id/diagnose_history_section"
@@ -261,8 +260,8 @@
                 android:layout_marginHorizontal="25dp"
                 android:layout_marginTop="10dp"
                 app:cardCornerRadius="16dp"
-                app:strokeColor="@color/nightRider"
-                app:layout_constraintTop_toBottomOf="@+id/diagnose_history_section">
+                app:layout_constraintTop_toBottomOf="@+id/diagnose_history_section"
+                app:strokeColor="@color/nightRider">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -272,11 +271,11 @@
                     <TextView
                         android:id="@+id/diagnose_history_date"
                         style="@style/TextContent"
-                        android:text="@string/diagnose_history_date"
                         android:drawablePadding="4dp"
+                        android:text="@string/diagnose_history_date"
+                        app:drawableStartCompat="@drawable/ic_dot_12dp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:drawableStartCompat="@drawable/ic_dot_12dp"/>
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/diagnose_history_title"
@@ -284,7 +283,7 @@
                         android:text="@string/diagnose_history_title"
                         android:textSize="18sp"
                         app:layout_constraintStart_toStartOf="@+id/diagnose_history_date"
-                        app:layout_constraintTop_toBottomOf="@+id/diagnose_history_date"/>
+                        app:layout_constraintTop_toBottomOf="@+id/diagnose_history_date" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -293,7 +292,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                app:layout_constraintTop_toBottomOf="@id/diagnose_history_card"/>
+                app:layout_constraintTop_toBottomOf="@id/diagnose_history_card" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

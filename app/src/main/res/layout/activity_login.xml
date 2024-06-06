@@ -5,10 +5,10 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/blue_circle_bg"
     android:gravity="bottom"
     android:orientation="vertical"
-    tools:context=".ui.authentication.LoginActivity"
-    android:background="@drawable/blue_circle_bg">
+    tools:context=".ui.authentication.LoginActivity">
 
     <ImageView
         android:layout_width="250dp"
@@ -16,14 +16,14 @@
         android:layout_gravity="center"
         android:layout_margin="30dp"
         android:layout_weight="1"
-        android:src="@drawable/logo"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        android:src="@drawable/logo" />
 
     <androidx.cardview.widget.CardView
-        android:layout_weight="@integer/material_motion_duration_long_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:layout_weight="@integer/material_motion_duration_long_1"
         app:cardCornerRadius="30dp"
         app:cardElevation="20dp">
 
@@ -35,12 +35,12 @@
             android:padding="24dp">
 
             <TextView
+                style="@style/TextContent.Medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/TextContent.Medium"
                 android:text="@string/login"
                 android:textAlignment="center"
-                android:textSize="25sp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -56,9 +56,9 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etEmail"
+                    style="@style/TextContent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/TextContent"
                     android:hint="@string/email" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -77,9 +77,9 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPassword"
+                    style="@style/TextContent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/TextContent"
                     android:hint="@string/password"
                     android:inputType="textPassword" />
 
@@ -87,12 +87,13 @@
 
             <Button
                 android:id="@+id/login_button"
+                style="@style/TextContent.Medium.White"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
-                style="@style/TextContent.Medium.White"
+                android:backgroundTint="@color/teal"
                 android:text="@string/login"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 app:cornerRadius="20dp" />
 
             <TextView
