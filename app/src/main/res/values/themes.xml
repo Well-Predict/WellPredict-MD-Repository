@@ -15,17 +15,17 @@
         <item name="android:textColor">@color/argent</item>
     </style>
 
-    <style name="TextContent.Bold.Black">
+    <style name="TextContent.Bold">
         <item name="fontFamily">@font/poppins_bold</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="TextContent.Medium.Black">
+    <style name="TextContent.Medium">
         <item name="fontFamily">@font/poppins_medium</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="TextContent.SemiBold.Black">
+    <style name="TextContent.SemiBold">
         <item name="fontFamily">@font/poppins_semibold</item>
         <item name="android:textColor">@color/black</item>
     </style>

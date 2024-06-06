@@ -37,7 +37,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/TextContent.Medium.Black"
+                style="@style/TextContent.Medium"
                 android:text="@string/register"
                 android:textAlignment="center"
                 android:textSize="25sp"
