@@ -22,7 +22,7 @@
                 android:layout_height="190dp"
                 android:contentDescription="@string/header_background"
                 android:scaleType="centerCrop"
-                android:src="@drawable/home_header_background"
+                android:src="@drawable/bg_home_header"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -130,7 +130,7 @@
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
+                android:id="@+id/newsCardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="25dp"
@@ -152,7 +152,7 @@
                         android:layout_marginEnd="20dp"
                         android:contentDescription="@string/news_background"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/news_image"
+                        android:src="@drawable/news_image_placeholder"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -201,13 +201,26 @@
                             android:gravity="center_vertical"
                             android:text="@string/news_time"
                             android:textSize="11sp"
-                            app:drawableStartCompat="@drawable/baseline_access_time_24" />
+                            app:drawableStartCompat="@drawable/ic_access_time_24" />
 
                     </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/cardViewShimmer"
+                android:layout_width="match_parent"
+                android:layout_height="135dp"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/bg_shimmer_effect"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/news_section">
+            </com.facebook.shimmer.ShimmerFrameLayout>
 
             <LinearLayout
                 android:id="@+id/diagnose_history_section"
@@ -216,7 +229,7 @@
                 android:layout_marginHorizontal="25dp"
                 android:layout_marginTop="25dp"
                 android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@+id/cardView">
+                app:layout_constraintTop_toBottomOf="@+id/newsCardView">
 
                 <TextView
                     android:id="@+id/diagnose_history_banner_title"
