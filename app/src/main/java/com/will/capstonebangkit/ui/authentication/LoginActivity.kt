@@ -1,13 +1,10 @@
-package com.will.capstonebangkit
+package com.will.capstonebangkit.ui.authentication
 
 import android.content.Intent
 import android.os.Bundle
 import android.text.Html
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.will.capstonebangkit.databinding.ActivityLoginBinding
 
 

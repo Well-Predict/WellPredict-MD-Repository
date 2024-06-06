@@ -15,6 +15,15 @@
         android:theme="@style/Theme.CapstoneBangkit"
         tools:targetApi="31">
         <activity
+            android:name=".ui.splashscreen.SplashScreenActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".ui.news.NewsWebViewActivity"
             android:exported="false" />
         <activity
@@ -23,19 +32,14 @@
             android:theme="@style/Theme.NewsActivity" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"
+            android:exported="false"
             android:label="@string/title_activity_main">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
-            android:name=".RegisterActivity"
+            android:name=".ui.authentication.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.authentication.LoginActivity"
             android:exported="false" />
     </application>
 
