@@ -14,6 +14,7 @@ android {
         versionCode = 1
         versionName = "1.0"
         buildConfigField("String", "NEWS_BASE_URL", "\"https://newsapi.org/v2/\"")
+        buildConfigField("String", "WELL_PREDICT_BASE_URL", "\"https://well-predict-api-3qpka34wwq-et.a.run.app/v1/user/\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -59,6 +60,9 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.lottie)
     implementation(libs.shimmer)
+    implementation(libs.androidx.datastore.preferences)
+    implementation(libs.androidx.datastore)
+    implementation(libs.flexbox)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

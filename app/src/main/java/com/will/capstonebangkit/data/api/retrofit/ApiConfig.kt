@@ -1,5 +1,6 @@
+package com.will.capstonebangkit.data.api.retrofit
+
 import com.will.capstonebangkit.BuildConfig
-import com.will.capstonebangkit.data.api.retrofit.NewsApiService
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -11,9 +12,9 @@ object ApiConfig {
         return createApiService(token, BuildConfig.NEWS_BASE_URL, NewsApiService::class.java)
     }
 
-//    fun getSecondApiService(token: String): SecondApiService {
-//        return createApiService(token, "https://second-api-url.com/", SecondApiService::class.java)
-//    }
+    fun getWellPredictApiService(token: String): WellPredictApiService {
+        return createApiService(token, BuildConfig.WELL_PREDICT_BASE_URL, WellPredictApiService::class.java)
+    }
 
     private fun <T> createApiService(token: String, baseUrl: String, serviceClass: Class<T>): T {
         val loggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.will.capstonebangkit.data.ResultState
 import com.will.capstonebangkit.databinding.ActivityNewsBinding
 import com.will.capstonebangkit.ui.ViewModelFactory
+import com.will.capstonebangkit.ui.adapter.NewsAdapter
 
 
 class NewsActivity : AppCompatActivity() {

@@ -1,34 +1,61 @@
 package com.will.capstonebangkit.ui.diagnose
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import com.google.android.flexbox.FlexDirection
+import com.google.android.flexbox.FlexboxLayoutManager
+import com.google.android.flexbox.JustifyContent
 import com.will.capstonebangkit.databinding.FragmentDiagnoseBinding
+import com.will.capstonebangkit.ui.ViewModelFactory
+import com.will.capstonebangkit.ui.adapter.SelectedSymptomAdapter
+import kotlinx.coroutines.launch
 
 class DiagnoseFragment : Fragment() {
 
-    private var _binding: FragmentDiagnoseBinding? = null
+    private val viewModel by viewModels<DiagnoseViewModel> {
+        ViewModelFactory.getInstance(requireContext())
+    }
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    private var _binding: FragmentDiagnoseBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var adapter: SelectedSymptomAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        val diagnoseViewModel =
-            ViewModelProvider(this).get(DiagnoseViewModel::class.java)
-
         _binding = FragmentDiagnoseBinding.inflate(inflater, container, false)
         val root: View = binding.root
-//        setupSearchBar()
+
+        observeSymptoms()
+        addSymptomOnClickHandler()
+        setupRecyclerView()
+        diagnoseOnClickHandler()
 
         return root
+    }
+
+    private fun setupRecyclerView() {
+        adapter = SelectedSymptomAdapter { symptom ->
+            lifecycleScope.launch {
+                viewModel.removeSelectedSymptom(symptom)
+            }
+        }
+        val flexboxLayoutManager = FlexboxLayoutManager(requireContext())
+        flexboxLayoutManager.flexDirection = FlexDirection.ROW
+        flexboxLayoutManager.justifyContent = JustifyContent.FLEX_START
+
+        binding.rvSelectedSymptom.layoutManager = flexboxLayoutManager
+        binding.rvSelectedSymptom.adapter = adapter
     }
 
     override fun onDestroyView() {
@@ -36,16 +63,26 @@ class DiagnoseFragment : Fragment() {
         _binding = null
     }
 
+    private fun addSymptomOnClickHandler(){
+        binding.tvAddSymptom.setOnClickListener{
+            val intent = Intent(activity, DiagnoseSearchActivity::class.java)
+            startActivity(intent)
+        }
+    }
 
-//    private fun setupSearchBar() {
-//        with(binding) {
-//            searchView.setupWithSearchBar(searchBar)
-//            searchView.editText.setOnEditorActionListener { _, _, _ ->
-//                searchBar.setText(searchView.text)
-//                searchView.hide()
-////                mainViewModel.searchQuery.value = searchView.text.toString()
-//                false
-//            }
-//        }
-//    }
+    private fun observeSymptoms() {
+        lifecycleScope.launch {
+            viewModel.selectedSymptom.collect { symptoms ->
+                adapter.submitList(symptoms.toList())
+            }
+        }
+    }
+
+    private fun diagnoseOnClickHandler() {
+        binding.btnDiagnose.setOnClickListener {
+            lifecycleScope.launch {
+                viewModel.clearSelectedSymptoms()
+            }
+        }
+    }
 }

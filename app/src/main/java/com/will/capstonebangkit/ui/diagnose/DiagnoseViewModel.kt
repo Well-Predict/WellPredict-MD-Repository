@@ -1,13 +1,25 @@
 package com.will.capstonebangkit.ui.diagnose
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.will.capstonebangkit.data.repository.SymptomsRepository
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.launch
 
-class DiagnoseViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+class DiagnoseViewModel(private val symptomsRepository: SymptomsRepository) : ViewModel() {
+
+    val selectedSymptom: Flow<List<String>> = symptomsRepository.getSymptomsFlow()
+
+    fun removeSelectedSymptom(symptom: String) {
+        viewModelScope.launch {
+            symptomsRepository.removeSelectedSymptom(symptom)
+        }
     }
-    val text: LiveData<String> = _text
+
+    fun clearSelectedSymptoms() {
+        viewModelScope.launch {
+            symptomsRepository.clearSelectedSymptoms()
+        }
+    }
 }

@@ -26,11 +26,14 @@ class NewsRepository(private val newsApiService: NewsApiService) {
         emit(ResultState.Loading)
         try {
             val successResponse = newsApiService.getNewsList()
-            val firstArticle = successResponse.articles?.firstOrNull()
-            if (firstArticle != null) {
-                emit(ResultState.Success(firstArticle))
+            val articles = successResponse.articles ?: emptyList()
+            val validArticles = articles.filter { it?.title != "removed" && it?.urlToImage != null }
+
+            val firstValidArticle = validArticles.firstOrNull()
+            if (firstValidArticle != null) {
+                emit(ResultState.Success(firstValidArticle))
             } else {
-                emit(ResultState.Error("No articles found"))
+                emit(ResultState.Error("No valid articles found"))
             }
         } catch (e: Exception) {
             emit(ResultState.Error(e.localizedMessage ?: "Unknown Error"))

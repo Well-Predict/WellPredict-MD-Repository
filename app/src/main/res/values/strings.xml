@@ -35,4 +35,7 @@
     <string name="register">Register</string>
     <string name="nama_lengkap">Nama Lengkap</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="add_symptom">Add symptom</string>
+    <string name="diagnose">Diagnose</string>
+    <string name="symptom_title">Symptom Title</string>
 </resources>
