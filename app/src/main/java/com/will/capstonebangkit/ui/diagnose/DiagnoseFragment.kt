@@ -2,9 +2,11 @@ package com.will.capstonebangkit.ui.diagnose
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -14,6 +16,7 @@ import com.google.android.flexbox.JustifyContent
 import com.will.capstonebangkit.databinding.FragmentDiagnoseBinding
 import com.will.capstonebangkit.ui.ViewModelFactory
 import com.will.capstonebangkit.ui.adapter.SelectedSymptomAdapter
+import com.will.capstonebangkit.utils.PredictionHelper
 import kotlinx.coroutines.launch
 
 class DiagnoseFragment : Fragment() {
@@ -26,6 +29,7 @@ class DiagnoseFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var adapter: SelectedSymptomAdapter
+    private lateinit var predictionHelper: PredictionHelper
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,6 +43,20 @@ class DiagnoseFragment : Fragment() {
         addSymptomOnClickHandler()
         setupRecyclerView()
         diagnoseOnClickHandler()
+
+        predictionHelper = PredictionHelper(
+            context = requireContext(),
+            onResult = { result ->
+                if (result.isNotEmpty()) {
+                    Log.d("hasil", "Prediction result: $result")
+                } else {
+                    Log.d("hasil", "Empty prediction result")
+                }
+            },
+            onError = { errorMessage ->
+                Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
+            }
+        )
 
         return root
     }
@@ -80,7 +98,11 @@ class DiagnoseFragment : Fragment() {
     private fun diagnoseOnClickHandler() {
         binding.btnDiagnose.setOnClickListener {
             lifecycleScope.launch {
-                viewModel.clearSelectedSymptoms()
+                viewModel.selectedSymptom.collect { symptoms ->
+                    // Convert symptoms to Array<String>
+                    val symptomArray = symptoms.toList().toTypedArray()
+                    predictionHelper.predict(symptomArray)
+                }
             }
         }
     }
