@@ -15,6 +15,13 @@
         <item name="android:textColor">@color/argent</item>
     </style>
 
+    <style name="TextContent.ActivityTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="TextContent.Bold">
         <item name="fontFamily">@font/poppins_bold</item>
         <item name="android:textColor">@color/black</item>
@@ -22,7 +29,7 @@
 
     <style name="TextContent.Medium">
         <item name="fontFamily">@font/poppins_medium</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/nightRider</item>
     </style>
 
     <style name="TextContent.SemiBold">

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.Html
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
+import com.will.capstonebangkit.MainActivity
 import com.will.capstonebangkit.databinding.ActivityLoginBinding
 
 
@@ -24,6 +25,12 @@ class LoginActivity : AppCompatActivity() {
 
         binding.tvRegisterRedirect.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        binding.loginButton.setOnClickListener {
+            val intent = Intent(this , MainActivity::class.java)
             startActivity(intent)
             finish()
         }

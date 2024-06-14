@@ -1,4 +1,4 @@
-package com.will.capstonebangkit.ui.news
+package com.will.capstonebangkit.ui.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.will.capstonebangkit.data.api.response.ArticlesItem
 import com.will.capstonebangkit.databinding.ItemNewsBinding
+import com.will.capstonebangkit.ui.news.NewsWebViewActivity
 import com.will.capstonebangkit.utils.DateHelper
 
 class NewsAdapter : ListAdapter<ArticlesItem, NewsAdapter.MyViewHolder>(DIFF_CALLBACK) {
@@ -27,7 +28,7 @@ class NewsAdapter : ListAdapter<ArticlesItem, NewsAdapter.MyViewHolder>(DIFF_CAL
         }
     }
 
-    class MyViewHolder(private val binding: ItemNewsBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class MyViewHolder(private val binding: ItemNewsBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: ArticlesItem) {
             Glide.with(itemView.context)
                 .load(item.urlToImage)

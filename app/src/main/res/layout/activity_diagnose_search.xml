@@ -6,14 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="30dp"
-    android:paddingHorizontal="15dp"
-    tools:context=".ui.news.NewsActivity">
+    android:paddingHorizontal="25dp"
+    tools:context=".ui.diagnose.DiagnoseSearchActivity"
+    tools:ignore="VisualLintTextFieldSize">
 
     <ImageButton
         android:id="@+id/back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
         android:background="@drawable/bg_icon_border"
         android:contentDescription="@string/icon_back"
         android:onClick="onBackButtonClick"
@@ -26,35 +26,35 @@
     <TextView
         android:id="@+id/textView"
         style="@style/TextContent.ActivityTitle"
-        android:text="@string/news_section_title"
+        android:text="@string/diagnose"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/back_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/back_button" />
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_news"
+    <SearchView
+        android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:paddingBottom="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_icon_border"
+        android:queryHint="@string/search"
+        android:queryBackground="@android:color/transparent"
+        android:iconifiedByDefault="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottie_loading_animation"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_symptom_list"
+        android:background="@drawable/bg_icon_border"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/heart_animation" />
+        app:layout_constraintTop_toBottomOf="@+id/search_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
