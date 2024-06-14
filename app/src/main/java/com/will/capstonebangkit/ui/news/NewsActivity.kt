@@ -53,13 +53,13 @@ class NewsActivity : AppCompatActivity() {
 
     private fun lottieLoadingAnimation(isLoading: Boolean){
         if (isLoading) {
-            binding.lottieLoadingAnimation.playAnimation();
+            binding.lottieLoadingAnimation.playAnimation()
         } else {
-            binding.lottieLoadingAnimation.setVisibility(View.GONE);
+            binding.lottieLoadingAnimation.setVisibility(View.GONE)
         }
     }
 
     fun onBackButtonClick(view: View) {
-        finish();
+        finish()
     }
 }

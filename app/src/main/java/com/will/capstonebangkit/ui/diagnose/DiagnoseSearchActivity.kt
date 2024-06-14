@@ -2,20 +2,16 @@ package com.will.capstonebangkit.ui.diagnose
 
 import SymptomPreference
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.SearchView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.will.capstonebangkit.data.ResultState
 import com.will.capstonebangkit.data.api.response.SymptomsItem
 import com.will.capstonebangkit.databinding.ActivityDiagnoseSearchBinding
 import com.will.capstonebangkit.ui.ViewModelFactory
 import com.will.capstonebangkit.ui.adapter.SymptomAdapter
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 
 class DiagnoseSearchActivity : AppCompatActivity() {
 
