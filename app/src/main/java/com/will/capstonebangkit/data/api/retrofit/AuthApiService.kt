@@ -2,7 +2,6 @@ package com.will.capstonebangkit.data.api.retrofit
 
 import com.will.capstonebangkit.data.api.response.LoginResponse
 import com.will.capstonebangkit.data.api.response.RegisterResponse
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
