@@ -13,7 +13,7 @@ object Injection {
     }
 
     fun provideSymptomsRepository(context: Context): SymptomsRepository {
-        val symptomsApiService = ApiConfig.getWellPredictApiService("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYm90IiwiZW1haWwiOiJib3QxQGdtYWlsLmNvbSIsImlhdCI6MTcxODM2NDc3OCwiZXhwIjoxNzE4MzY4Mzc4fQ.9XwEzt7KnsV9TVOIp6YFhYhNM1nJgekYhoP0sPw0IhQ")
+        val symptomsApiService = ApiConfig.getWellPredictApiService("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvdDFAZ21haWwuY29tIiwibmFtZSI6ImJvdCIsInBhc3N3b3JkIjoiJDJiJDEwJDJvejZ4RWRNcld6aU9TTnlzdWQubk9nT2lyOEZBL0ppUjFnQ3N5WG9uYU8vRWtKMFlvamN1IiwiaWF0IjoxNzE4NjU4NjU4LCJleHAiOjE3MTg2NjIyNTh9.w1S7sLc-CKfElLFURniEltD4gTisk1GASaLp7v9C5Ag")
         val symptomPref = SymptomPreference.getInstance(context)
         return SymptomsRepository.getInstance(symptomsApiService, symptomPref)
     }

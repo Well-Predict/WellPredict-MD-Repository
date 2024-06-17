@@ -26,8 +26,7 @@
             style="@style/TextContent.Medium"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="10dp"
-            android:text="@string/month_year_date"
-            android:textSize="16sp" />
+            android:text="@string/month_year_date" />
     </LinearLayout>
 
     <View
@@ -42,10 +41,9 @@
 
     <TextView
         android:id="@+id/tv_add_symptom_title"
-        style="@style/TextContent"
+        style="@style/TextContent.SubHeading"
         android:layout_marginTop="30dp"
         android:text="@string/add_symptomps_title"
-        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,7 +74,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rv_selected_symptom" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_diagnose"
         style="@style/TextContent.Bold"
         android:layout_width="match_parent"
@@ -88,6 +86,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_add_symptom" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_add_symptom"
+        app:cornerRadius="6dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

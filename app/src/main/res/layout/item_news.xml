@@ -49,7 +49,7 @@
 
             <TextView
                 android:id="@+id/tv_news_author"
-                style="@style/TextContent"
+                style="@style/TextContent.BodyText"
                 android:text="@string/news_title" />
 
             <TextView
@@ -61,7 +61,7 @@
 
             <TextView
                 android:id="@+id/tv_news_upload_time"
-                style="@style/TextContent"
+                style="@style/TextContent.BodyText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawablePadding="4dp"
