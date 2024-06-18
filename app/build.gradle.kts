@@ -64,7 +64,9 @@ dependencies {
     implementation(libs.flexbox)
     implementation(libs.play.services.tflite.java)
     implementation(libs.play.services.tflite.gpu)
+    implementation (libs.hdodenhof.circleimageview)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(kotlin("script-runtime"))
 }

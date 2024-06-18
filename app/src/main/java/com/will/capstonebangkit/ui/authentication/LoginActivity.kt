@@ -35,19 +35,21 @@ class LoginActivity : AppCompatActivity(), View.OnFocusChangeListener {
         binding.etLoginPassword.onFocusChangeListener = this
 
         binding.btnLogin.setOnClickListener {
-            email = binding.etLoginEmail.text.toString().trim()
-            password = binding.etLoginPassword.text.toString().trim()
-            if (!binding.layoutLoginEmail.isErrorEnabled && !binding.layoutLoginPassword.isErrorEnabled) {
-                if (email.isNotEmpty() && password.isNotEmpty()) {
-                    userLogin(email, password)
-                } else {
-                    binding.layoutLoginEmail.error = "Email is Required"
-                    binding.layoutLoginPassword.error = "Password is Required"
-                }
-
-            } else {
-                Toast.makeText(this@LoginActivity, "Please re-check your e-mail or password", Toast.LENGTH_LONG).show()
-            }
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+//            email = binding.etLoginEmail.text.toString().trim()
+//            password = binding.etLoginPassword.text.toString().trim()
+//            if (!binding.layoutLoginEmail.isErrorEnabled && !binding.layoutLoginPassword.isErrorEnabled) {
+//                if (email.isNotEmpty() && password.isNotEmpty()) {
+//                    userLogin(email, password)
+//                } else {
+//                    binding.layoutLoginEmail.error = "Email is Required"
+//                    binding.layoutLoginPassword.error = "Password is Required"
+//                }
+//
+//            } else {
+//                Toast.makeText(this@LoginActivity, "Please re-check your e-mail or password", Toast.LENGTH_LONG).show()
+//            }
         }
 
         binding.tvRegisterRedirect.text =

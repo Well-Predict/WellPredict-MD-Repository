@@ -12,7 +12,7 @@
     <string name="diagnose_title">Diagnose your symptoms</string>
     <string name="check_now_button">Check Now</string>
     <string name="greetings_description">Hope you’re doing good!</string>
-    <string name="greetings_title">Hey, Rifqi</string>
+    <string name="greetings_title">Hey,</string>
     <string name="header_background">Header Background</string>
     <string name="logo_image">Logo Image</string>
     <string name="news_see_all">See All</string>
@@ -29,9 +29,8 @@
     <string name="diagnose_button_title">Diagnose Your Symptomps</string>
     <string name="add_symptoms">Add symptoms</string>
     <string name="logout">Log-out</string>
-    <string name="email">E-mail</string>
     <string name="password">Password</string>
-    <string name="login">Login</string>
+    <string name="login">Log in</string>
     <string name="register">Register</string>
     <string name="nama_lengkap">Nama Lengkap</string>
     <string name="confirm_password">Confirm Password</string>
@@ -40,4 +39,11 @@
     <string name="symptom_title">Symptom Title</string>
     <string name="tflite_is_not_initialized_yet">TfLite is not initialized yet</string>
     <string name="no_tflite_interpreter_loaded">No TFLite interpreter loaded</string>
+    <string name="username">Username</string>
+    <string name="email">E-mail</string>
+    <string name="full_name">Full Name</string>
+    <string name="please_enter_your_information">Please enter your information</string>
+    <string name="please_enter_your_account">Please enter your account</string>
+    <string name="profile">Profile</string>
+    <string name="setting_button">setting_button</string>
 </resources>

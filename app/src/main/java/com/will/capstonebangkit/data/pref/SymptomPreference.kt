@@ -7,7 +7,6 @@ import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-// Extension property untuk mendapatkan instance DataStore
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "symptom_pref")
 
 class SymptomPreference private constructor(private val dataStore: DataStore<Preferences>) {
