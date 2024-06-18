@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("kotlin-kapt")
 }
 
 android {
@@ -37,6 +38,7 @@ android {
     buildFeatures {
         viewBinding = true
         buildConfig = true
+        dataBinding = true
     }
 }
 
@@ -65,6 +67,8 @@ dependencies {
     implementation(libs.play.services.tflite.java)
     implementation(libs.play.services.tflite.gpu)
     implementation (libs.hdodenhof.circleimageview)
+    implementation (libs.popup.dialog)
+    implementation (libs.androidx.databinding.runtime)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
