@@ -53,10 +53,8 @@
 
             <TextView
                 android:id="@+id/tv_greetings_description"
-                style="@style/TextContent.Black"
+                style="@style/TextContent.Regular.Large"
                 android:text="@string/greetings_description"
-                android:textColor="@color/black"
-                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="@+id/greetings_section"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/greetings_section"
@@ -88,7 +86,7 @@
                     android:text="@string/diagnose_title" />
 
                 <TextView
-                    style="@style/TextContent.Black"
+                    style="@style/TextContent.Regular.Medium"
                     android:text="@string/diagnose_description" />
 
                 <com.google.android.material.button.MaterialButton
@@ -195,13 +193,12 @@
                         <TextView
                             android:id="@+id/tv_news_upload_time"
                             style="@style/TextContent.BodyText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:textColor="@color/argent"
                             android:drawablePadding="4dp"
                             android:gravity="center_vertical"
                             android:text="@string/news_time"
                             android:textSize="11sp"
-                            app:drawableStartCompat="@drawable/ic_access_time_24" />
+                            app:drawableStartCompat="@drawable/ic_access_time_24"/>
 
                     </LinearLayout>
 
@@ -268,6 +265,7 @@
                         style="@style/TextContent.BodyText"
                         android:drawablePadding="4dp"
                         android:text="@string/diagnose_history_date"
+                        android:textColor="@color/argent"
                         app:drawableStartCompat="@drawable/ic_dot_12dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />

@@ -32,7 +32,7 @@
 
     <TextView
         android:id="@+id/textView3"
-        style="@style/TextContent.Black"
+        style="@style/TextContent.Regular.Medium"
         android:text="@string/please_enter_your_information"
         app:layout_constraintEnd_toEndOf="@+id/textView2"
         app:layout_constraintHorizontal_bias="0.0"

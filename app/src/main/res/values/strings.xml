@@ -44,4 +44,6 @@
     <string name="full_name">Full Name</string>
     <string name="please_enter_your_information">Please enter your information</string>
     <string name="please_enter_your_account">Please enter your account</string>
+    <string name="profile">Profile</string>
+    <string name="setting_button">setting_button</string>
 </resources>

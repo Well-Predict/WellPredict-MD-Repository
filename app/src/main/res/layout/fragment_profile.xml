@@ -4,124 +4,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="25dp"
     tools:context=".ui.profile.ProfileFragment">
 
-    <ImageView
+    <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scaleType="fitXY"
-        android:src="@drawable/blue_circle_top"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/shapeableImageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_margin="35dp"
-        android:padding="20dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/default_pfp"
+        <TextView
+            style="@style/TextContent.Regular.ExtraLarge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/profile"
+            android:layout_marginEnd="16dp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/setting_button"
+            android:src="@drawable/ic_settings_24dp"
+            android:background="@null"
+            app:tint="?attr/colorOnPrimary"/>
+    </LinearLayout>
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="70dp"
+        android:padding="10dp"
+        android:background="@drawable/bg_circle"
+        android:src="@drawable/chamber_cat"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/circle_image"
-        app:strokeColor="#59b5e6"
-        app:strokeWidth="3dp" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout1" />
 
-    <TextView
-        android:id="@+id/text_notifications"
-        android:layout_width="150dp"
+        <TextView
+            android:id="@+id/tv_user_name"
+            style="@style/TextContent.Regular.Large"
+            android:layout_marginTop="20dp"
+            android:text="Rifqi Aditya"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:fontFamily="@font/poppins_bold"
-        android:maxLines="2"
-        android:text="Rifqi Aditya"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/shapeableImageView"
-        app:layout_constraintStart_toEndOf="@+id/shapeableImageView"
-        app:layout_constraintTop_toTopOf="@+id/shapeableImageView"
-        app:layout_constraintVertical_bias="0.4" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_regular"
-        android:text="User Member : 307F654"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@+id/text_notifications"
-        app:layout_constraintTop_toBottomOf="@+id/text_notifications" />
-
-    <Button
-        android:id="@+id/btnChangePassword"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="20dp"
-        android:backgroundTint="@color/teal"
-        android:fontFamily="@font/poppins_regular"
-        android:text="Change Password"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:cornerRadius="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_icon_border"
+        android:orientation="vertical"
+        android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shapeableImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_user_name">
 
-    <Button
-        android:id="@+id/btnHistory"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
-        android:backgroundTint="@color/teal"
-        android:fontFamily="@font/poppins_regular"
-        android:text="Diagnose History"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:cornerRadius="10dp"
+        <TextView
+            style="@style/TextContent.Regular.Small"
+            android:text="rifqiaditya@gmail.com" />
+
+        <TextView
+            style="@style/TextContent.Regular.Small"
+            android:layout_marginTop="14dp"
+            android:text="***********" />
+
+        <TextView
+            style="@style/TextContent.Regular.Small"
+            android:layout_marginTop="14dp"
+            android:text="22 years old" />
+
+        <TextView
+            style="@style/TextContent.Regular.Small"
+            android:layout_marginTop="14dp"
+            android:text="Jakarta, Indonesia" />
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.MyApp.LogoutButton"
+        android:layout_marginTop="20dp"
+        android:text="Log out"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnChangePassword" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
-    <Button
-        android:id="@+id/btnAboutUs"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
-        android:backgroundTint="@color/teal"
-        android:fontFamily="@font/poppins_regular"
-        android:text="About Us"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:cornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnHistory" />
-
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_margin="20dp"
-        android:layout_marginTop="196dp"
-        android:backgroundTint="@color/teal"
-        android:fontFamily="@font/poppins_regular"
-        android:text="@string/logout"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:cornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAboutUs" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
