@@ -89,6 +89,7 @@
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_logout"
         style="@style/Widget.MyApp.LogoutButton"
         android:layout_marginTop="20dp"
         android:text="Log out"
