@@ -23,6 +23,4 @@ class DiagnoseViewModel(private val symptomsRepository: SymptomsRepository, priv
             symptomsRepository.clearSelectedSymptoms()
         }
     }
-
-    fun diagnose(symptom: Array<String>) = diagnoseRepository.diagnose(symptom)
 }

@@ -1,14 +1,10 @@
 package com.bangkit.wellpredict.ui.auth
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.doAfterTextChanged
-import androidx.lifecycle.Observer
-import androidx.lifecycle.viewmodel.viewModelFactory
 import com.bangkit.wellpredict.data.ResultState
 import com.bangkit.wellpredict.data.model.User
 import com.bangkit.wellpredict.databinding.ActivityLoginBinding
@@ -18,14 +14,15 @@ import com.bangkit.wellpredict.utils.AuthHelper
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityLoginBinding
+    private val binding by lazy {
+        ActivityLoginBinding.inflate(layoutInflater)
+    }
     private val viewModel: LoginViewModel by viewModels {
         ViewModelFactory.getInstance(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         supportActionBar?.hide()
