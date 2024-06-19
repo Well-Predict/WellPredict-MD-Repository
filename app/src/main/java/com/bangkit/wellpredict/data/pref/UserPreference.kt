@@ -35,6 +35,12 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         }
     }
 
+    suspend fun updateAccessToken(newAccessToken: String) {
+        dataStore.edit { preferences ->
+            preferences[ACCESS_TOKEN] = newAccessToken
+        }
+    }
+
     suspend fun logout() {
         dataStore.edit { preferences ->
             preferences.clear()

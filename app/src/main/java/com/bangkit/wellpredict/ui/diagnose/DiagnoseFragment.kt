@@ -27,8 +27,6 @@ class DiagnoseFragment : Fragment() {
     private var _binding: FragmentDiagnoseBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var symptomArray : Array<String>
-
     private lateinit var adapter: SelectedSymptomAdapter
 
     override fun onCreateView(
@@ -83,35 +81,21 @@ class DiagnoseFragment : Fragment() {
 
     private fun diagnoseOnClickHandler() {
         binding.btnDiagnose.setOnClickListener {
-            // Ambil gejala dari viewModel
-            val symptoms = adapter.currentList.mapNotNull { it } // Ganti ini sesuai dengan cara adapter memperoleh gejalanya
+            val symptoms = adapter.currentList.mapNotNull { it }
 
-            // Pastikan ada gejala sebelum memanggil diagnose
             if (symptoms.isNotEmpty()) {
-                // Ubah ke array untuk mengirim ke fungsi diagnose
-                val symptomArray = symptoms.toTypedArray()
+                val symptomList = ArrayList(symptoms)
 
-                // Jalankan fungsi diagnose dari viewModel
-                viewModel.diagnose(symptomArray).observe(viewLifecycleOwner) { result ->
-                    when (result) {
-                        is ResultState.Loading -> {
-                            Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
-                        }
-                        is ResultState.Success -> {
-                            Toast.makeText(requireContext(), "Success", Toast.LENGTH_SHORT).show()
-                            // Handle success case
-                        }
-                        is ResultState.Error -> {
-                            Toast.makeText(requireContext(), result.error.toString(), Toast.LENGTH_SHORT).show()
-                            // Handle error case
-                        }
-                    }
+                viewModel.clearSelectedSymptoms()
+
+                val intent = Intent(requireContext(), DiagnoseResultActivity::class.java).apply {
+                    putStringArrayListExtra("SYMPTOM_LIST", symptomList)
                 }
+
+                startActivity(intent)
             } else {
-                // Handle case jika tidak ada gejala yang dipilih
                 Toast.makeText(requireContext(), "No symptoms selected", Toast.LENGTH_SHORT).show()
             }
         }
     }
-
 }

@@ -33,7 +33,6 @@ class DiagnoseSearchActivity : AppCompatActivity() {
         setupRecyclerView()
         setupSearchView()
 
-        // Observasi perubahan symptomList
         viewModel.getSymptomsList().observe(this) { result ->
             if (result != null){
                 when (result) {
@@ -49,7 +48,6 @@ class DiagnoseSearchActivity : AppCompatActivity() {
                             adapter.submitList(result.data)
                         }
 
-//                        lottieLoadingAnimation(false)
                     }
                     is ResultState.Error -> {
 //                        lottieLoadingAnimation(false)

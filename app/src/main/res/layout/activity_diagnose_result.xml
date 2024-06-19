@@ -7,13 +7,12 @@
     android:layout_height="match_parent"
     android:paddingTop="30dp"
     android:paddingHorizontal="25dp"
-    tools:context=".ui.news.NewsActivity">
+    tools:context=".ui.diagnose.DiagnoseResultActivity">
 
     <ImageButton
         android:id="@+id/back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
         android:background="@drawable/bg_icon_border"
         android:contentDescription="@string/icon_back"
         android:onClick="onBackButtonClick"
@@ -26,7 +25,7 @@
     <TextView
         android:id="@+id/textView"
         style="@style/TextContent.ActivityTitle"
-        android:text="@string/news_section_title"
+        android:text="Diagnose Results"
         android:textSize="20sp"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintBottom_toBottomOf="@+id/back_button"
@@ -34,17 +33,52 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/back_button" />
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_news"
+    <LinearLayout
+        android:id="@+id/greetings_section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:paddingBottom="50dp"
+        android:layout_marginTop="36dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <TextView
+            android:id="@+id/tv_user_name"
+            style="@style/TextContent.Bold.Teal"
+            android:text="Hi, Rifqi"
+            android:textSize="18dp" />
+
+        <TextView
+            style="@style/TextContent.SubHeading"
+            android:text="For the time being, this is a diagnosis of some of the symptoms you give." />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/disease_result_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/teal"
+        android:layout_marginTop="20dp"
+        android:padding="18dp"
+        android:background="@drawable/bg_rectangle_teal"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/greetings_section">
+
+        <TextView
+            android:id="@+id/tv_disease_name"
+            style="@style/TextContent.Bold.Caption"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:text="Weakness in limbs" />
+
+        <TextView
+            android:id="@+id/tv_disease_description"
+            style="@style/TextContent.Regular.Medium"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            android:text="Weakness in the legs can be caused by many different conditions, including amyotrophic lateral sclerosis (ALS or called Lou Gehrig’s disease), bulging/herniated (slipped) disc, Cauda equina syndrome, Guillain-Barré syndrome, autoimmune diseases, multiple sclerosis, Parkinson’s disease, peripheral neuropathy, pinched nerve, stroke, and others." />
+    </LinearLayout>
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottie_loading_animation"

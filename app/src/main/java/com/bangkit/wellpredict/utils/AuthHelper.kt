@@ -22,12 +22,13 @@ object AuthHelper {
         confirmPasswordLiveData.value = ""
     }
 
+
     fun observeLoginInputChanges(button: MaterialButton) {
-        emailLiveData.observeForever { email ->
+        emailLiveData.observeForever {
             updateLoginButtonStatus(button)
         }
 
-        passwordLiveData.observeForever { password ->
+        passwordLiveData.observeForever {
             updateLoginButtonStatus(button)
         }
     }

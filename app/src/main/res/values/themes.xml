@@ -15,13 +15,11 @@
     <style name="TextContent">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="fontFamily">@font/poppins_regular</item>
-        <item name="android:textColor">@color/argent</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
+    <!-- Regular text style -->
     <style name="TextContent.Regular">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
         <item name="fontFamily">@font/poppins_regular</item>
         <item name="android:textColor">@color/black</item>
     </style>
@@ -41,6 +39,8 @@
     <style name="TextContent.Regular.ExtraLarge">
         <item name="android:textSize">20sp</item>
     </style>
+
+
 
     <!-- Sub-heading text style -->
     <style name="TextContent.SubHeading">
@@ -140,6 +140,12 @@
         <item name="fontFamily">@font/poppins_light</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">34sp</item>
+    </style>
+
+    <!-- Bold text style -->
+    <style name="TextContent.Bold.Teal">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:textColor">@color/teal</item>
     </style>
 
     <!-- News Activity Theme -->
