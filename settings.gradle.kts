@@ -20,5 +20,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Capstone Bangkit"
+rootProject.name = "Well Predict"
 include(":app")

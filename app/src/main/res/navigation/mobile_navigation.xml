@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.will.capstonebangkit.ui.home.HomeFragment"
+        android:name="com.bangkit.wellpredict.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_diagnose"
-        android:name="com.will.capstonebangkit.ui.diagnose.DiagnoseFragment"
+        android:name="com.bangkit.wellpredict.ui.diagnose.DiagnoseFragment"
         android:label="@string/title_diagnose"
         tools:layout="@layout/fragment_diagnose" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.will.capstonebangkit.ui.profile.ProfileFragment"
+        android:name="com.bangkit.wellpredict.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

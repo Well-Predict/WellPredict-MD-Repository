@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.will.capstonebangkit"
+    namespace = "com.bangkit.wellpredict"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.will.capstonebangkit"
+        applicationId = "com.bangkit.wellpredict"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
