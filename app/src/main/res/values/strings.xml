@@ -37,8 +37,6 @@
     <string name="add_symptom">Add symptom</string>
     <string name="diagnose">Diagnose</string>
     <string name="symptom_title">Symptom Title</string>
-    <string name="tflite_is_not_initialized_yet">TfLite is not initialized yet</string>
-    <string name="no_tflite_interpreter_loaded">No TFLite interpreter loaded</string>
     <string name="username">Username</string>
     <string name="email">E-mail</string>
     <string name="full_name">Full Name</string>
@@ -46,4 +44,8 @@
     <string name="please_enter_your_account">Please enter your account</string>
     <string name="profile">Profile</string>
     <string name="setting_button">setting_button</string>
+    <string name="register_here">Register here!</string>
+    <string name="didn_t_have_an_account_yet">Didn’t have an account yet?</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="login_here">Login here</string>
 </resources>
