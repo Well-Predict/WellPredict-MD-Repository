@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.bangkit.wellpredict.R
-import com.bangkit.wellpredict.ui.authentication.LoginActivity
+import com.bangkit.wellpredict.ui.auth.LoginActivity
 
 class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

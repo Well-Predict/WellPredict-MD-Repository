@@ -1,4 +1,4 @@
-package com.bangkit.wellpredict.ui.authentication
+package com.bangkit.wellpredict.ui.auth
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

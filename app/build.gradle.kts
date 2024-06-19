@@ -15,7 +15,7 @@ android {
         versionCode = 1
         versionName = "1.0"
         buildConfigField("String", "NEWS_BASE_URL", "\"https://newsapi.org/v2/\"")
-        buildConfigField("String", "WELL_PREDICT_BASE_URL", "\"https://well-predict-api-3qpka34wwq-et.a.run.app/v1/user/\"")
+        buildConfigField("String", "WELL_PREDICT_BASE_URL", "\"https://wellpredict-api-sgvhineptq-et.a.run.app/v1/user/\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

@@ -9,11 +9,13 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.bangkit.wellpredict.R
 import com.bumptech.glide.Glide
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.bangkit.wellpredict.data.ResultState
 import com.bangkit.wellpredict.databinding.FragmentHomeBinding
 import com.bangkit.wellpredict.ui.ViewModelFactory
+import com.bangkit.wellpredict.ui.auth.LoginActivity
 import com.bangkit.wellpredict.ui.news.NewsActivity
 import com.bangkit.wellpredict.ui.news.NewsWebViewActivity
 import com.bangkit.wellpredict.utils.DateHelper
@@ -39,6 +41,12 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        viewModel.getSession().observe(viewLifecycleOwner) { user ->
+            if (!user.isLogin) {
+                startActivity(Intent(requireContext(), LoginActivity::class.java))
+            }
+        }
 
         shimmerFrameLayout = binding.cardViewShimmer
 

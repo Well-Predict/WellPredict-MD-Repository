@@ -135,6 +135,16 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
+    <!-- Poppins Light styles -->
+    <style name="TextContent.Light">
+        <item name="fontFamily">@font/poppins_light</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextContent.Light.Heading">
+        <item name="android:textSize">34sp</item>
+    </style>
+
     <!-- Bottom Navigation Style -->
     <style name="BottomNavigationStyle" parent="Widget.Design.BottomNavigationView">
         <item name="backgroundTint">@color/nightRider</item> <!-- Background color -->

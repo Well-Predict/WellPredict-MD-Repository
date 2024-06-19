@@ -15,10 +15,10 @@
         android:theme="@style/Theme.CapstoneBangkit"
         tools:targetApi="31">
         <activity
-            android:name=".ui.authentication.RegisterDummyActivity"
+            android:name=".ui.auth.RegisterDummyActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.authentication.LoginDummyActivity"
+            android:name=".ui.auth.LoginDummyActivity"
             android:exported="false" />
         <activity
             android:name=".ui.diagnose.DiagnoseSearchActivity"
@@ -34,21 +34,20 @@
             android:exported="false"
             android:theme="@style/Theme.NewsActivity" />
         <activity
-            android:name=".MainActivity"
-            android:exported="false"
-            android:label="@string/title_activity_main" />
-        <activity
-            android:name=".ui.authentication.RegisterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.authentication.LoginActivity"
-            android:exported="true">
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:label="@string/title_activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.auth.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.auth.LoginActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

@@ -39,7 +39,7 @@ class PredictionHelper(
         }.addOnSuccessListener {
             loadLocalModel()
         }.addOnFailureListener {
-            onError(context.getString(R.string.tflite_is_not_initialized_yet))
+//            onError(context.getString(R.string.tflite_is_not_initialized_yet))
         }
     }
 
@@ -82,7 +82,7 @@ class PredictionHelper(
                 // Send result back to caller
                 onResult(outputResult)
             } catch (e: Exception) {
-                onError(context.getString(R.string.no_tflite_interpreter_loaded))
+//                onError(context.getString(R.string.no_tflite_interpreter_loaded))
                 Log.e(TAG, e.message.toString())
             }
         }
