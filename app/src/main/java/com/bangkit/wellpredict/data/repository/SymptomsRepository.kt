@@ -19,11 +19,9 @@ class SymptomsRepository(
         emit(ResultState.Loading)
         try {
             val successResponse = wellPredictApiService.getSymptomsList()
-            Log.d("asd", "getSymptomsList: $successResponse")
             emit(ResultState.Success(successResponse.symptoms))
         } catch (e: Exception) {
             emit(ResultState.Error(e.localizedMessage ?: "Unknown Error"))
-            Log.d("asd", "getSymptomsList: $e")
         }
     }
 

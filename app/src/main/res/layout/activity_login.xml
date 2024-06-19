@@ -58,7 +58,7 @@
                     android:background="@drawable/bg_underline_text_input"
                     android:inputType="textEmailAddress"
                     android:textColor="@color/argent"
-                    app:validateEmail="@{true}" />
+                    app:validateEmail="@{true}"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,9 +73,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:endIconMode="clear_text"
-                app:endIconTint="@color/argent"
-                app:errorEnabled="true">
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/argent">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_password_input"
@@ -115,6 +114,7 @@
             <TextView
                 android:id="@+id/tv_register"
                 style="@style/TextContent.Regular.Medium"
+                android:layout_marginStart="4dp"
                 android:textColor="@color/blue"
                 android:text="@string/register_here" />
         </LinearLayout>

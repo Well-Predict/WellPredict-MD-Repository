@@ -56,7 +56,7 @@ object AuthHelper {
             updateRegisterButtonStatus(button, name, email, password, confirmPassword)
         }
 
-        nameLiveData.observeForever { confirmPassword ->
+        confirmPasswordLiveData.observeForever { confirmPassword ->
             val name = nameLiveData.value ?: ""
             val email = emailLiveData.value ?: ""
             val password = passwordLiveData.value ?: ""
@@ -111,7 +111,7 @@ object AuthHelper {
                 val name = it.toString().trim()
                 val isValid = name.matches(Regex("^[a-zA-Z\\s]+$"))
                 val parent = editText.parent.parent as? TextInputLayout
-                if (!isValid) {
+                if (isValid) {
                     parent?.error = null
                 } else {
                     parent?.error = "Invalid Name format"
