@@ -11,8 +11,11 @@ data class ErrorResponse(
 	val errors: Errors? = null,
 
 	@field:SerializedName("status")
-	val status: String? = null
-)
+	val status: String? = null,
+
+	@field:SerializedName("message")
+		val message: String? = null
+	)
 
 data class Errors(
 

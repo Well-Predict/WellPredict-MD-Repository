@@ -2,7 +2,6 @@ package com.bangkit.wellpredict.ui.diagnose
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,13 +9,13 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.google.android.flexbox.FlexDirection
-import com.google.android.flexbox.FlexboxLayoutManager
-import com.google.android.flexbox.JustifyContent
+import com.bangkit.wellpredict.data.ResultState
 import com.bangkit.wellpredict.databinding.FragmentDiagnoseBinding
 import com.bangkit.wellpredict.ui.ViewModelFactory
 import com.bangkit.wellpredict.ui.adapter.SelectedSymptomAdapter
-import com.bangkit.wellpredict.utils.PredictionHelper
+import com.google.android.flexbox.FlexDirection
+import com.google.android.flexbox.FlexboxLayoutManager
+import com.google.android.flexbox.JustifyContent
 import kotlinx.coroutines.launch
 
 class DiagnoseFragment : Fragment() {
@@ -28,8 +27,9 @@ class DiagnoseFragment : Fragment() {
     private var _binding: FragmentDiagnoseBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var symptomArray : Array<String>
+
     private lateinit var adapter: SelectedSymptomAdapter
-    private lateinit var predictionHelper: PredictionHelper
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,20 +43,6 @@ class DiagnoseFragment : Fragment() {
         addSymptomOnClickHandler()
         setupRecyclerView()
         diagnoseOnClickHandler()
-
-        predictionHelper = PredictionHelper(
-            context = requireContext(),
-            onResult = { result ->
-                if (result.isNotEmpty()) {
-                    Log.d("hasil", "Prediction result: $result")
-                } else {
-                    Log.d("hasil", "Empty prediction result")
-                }
-            },
-            onError = { errorMessage ->
-                Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
-            }
-        )
 
         return root
     }
@@ -97,13 +83,35 @@ class DiagnoseFragment : Fragment() {
 
     private fun diagnoseOnClickHandler() {
         binding.btnDiagnose.setOnClickListener {
-            lifecycleScope.launch {
-                viewModel.selectedSymptom.collect { symptoms ->
-                    // Convert symptoms to Array<String>
-                    val symptomArray = symptoms.toList().toTypedArray()
-                    predictionHelper.predict(symptomArray)
+            // Ambil gejala dari viewModel
+            val symptoms = adapter.currentList.mapNotNull { it } // Ganti ini sesuai dengan cara adapter memperoleh gejalanya
+
+            // Pastikan ada gejala sebelum memanggil diagnose
+            if (symptoms.isNotEmpty()) {
+                // Ubah ke array untuk mengirim ke fungsi diagnose
+                val symptomArray = symptoms.toTypedArray()
+
+                // Jalankan fungsi diagnose dari viewModel
+                viewModel.diagnose(symptomArray).observe(viewLifecycleOwner) { result ->
+                    when (result) {
+                        is ResultState.Loading -> {
+                            Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                        }
+                        is ResultState.Success -> {
+                            Toast.makeText(requireContext(), "Success", Toast.LENGTH_SHORT).show()
+                            // Handle success case
+                        }
+                        is ResultState.Error -> {
+                            Toast.makeText(requireContext(), result.error.toString(), Toast.LENGTH_SHORT).show()
+                            // Handle error case
+                        }
+                    }
                 }
+            } else {
+                // Handle case jika tidak ada gejala yang dipilih
+                Toast.makeText(requireContext(), "No symptoms selected", Toast.LENGTH_SHORT).show()
             }
         }
     }
+
 }

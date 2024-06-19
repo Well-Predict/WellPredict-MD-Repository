@@ -22,69 +22,60 @@ object AuthHelper {
         confirmPasswordLiveData.value = ""
     }
 
-
     fun observeLoginInputChanges(button: MaterialButton) {
         emailLiveData.observeForever { email ->
-            val password = passwordLiveData.value ?: ""
-            updateLoginButtonStatus(button, email, password)
+            updateLoginButtonStatus(button)
         }
 
         passwordLiveData.observeForever { password ->
-            val email = emailLiveData.value ?: ""
-            updateLoginButtonStatus(button, email, password)
+            updateLoginButtonStatus(button)
         }
     }
 
     fun observeRegisterInputChanges(button: MaterialButton) {
-        emailLiveData.observeForever { email ->
-            val name = nameLiveData.value ?: ""
-            val password = passwordLiveData.value ?: ""
-            val confirmPassword = confirmPasswordLiveData.value ?: ""
-            updateRegisterButtonStatus(button, name, email, password, confirmPassword)
+        emailLiveData.observeForever {
+            updateRegisterButtonStatus(button)
         }
 
-        passwordLiveData.observeForever { password ->
-            val name = nameLiveData.value ?: ""
-            val email = emailLiveData.value ?: ""
-            val confirmPassword = confirmPasswordLiveData.value ?: ""
-            updateRegisterButtonStatus(button, name, email, password, confirmPassword)
-        }
-        nameLiveData.observeForever { name ->
-            val email = emailLiveData.value ?: ""
-            val password = passwordLiveData.value ?: ""
-            val confirmPassword = confirmPasswordLiveData.value ?: ""
-            updateRegisterButtonStatus(button, name, email, password, confirmPassword)
+        passwordLiveData.observeForever {
+            updateRegisterButtonStatus(button)
         }
 
-        confirmPasswordLiveData.observeForever { confirmPassword ->
-            val name = nameLiveData.value ?: ""
-            val email = emailLiveData.value ?: ""
-            val password = passwordLiveData.value ?: ""
-            updateRegisterButtonStatus(button, name, email, password, confirmPassword)
+        nameLiveData.observeForever {
+            updateRegisterButtonStatus(button)
+        }
+
+        confirmPasswordLiveData.observeForever {
+            updateRegisterButtonStatus(button)
         }
     }
 
-    private fun updateLoginButtonStatus(button: MaterialButton, email: String, password: String) {
+    private fun updateLoginButtonStatus(button: MaterialButton) {
+        val email = emailLiveData.value ?: ""
+        val password = passwordLiveData.value ?: ""
         val isValidEmail = isValidEmail(email)
         val isValidPassword = isValidPassword(password)
 
-        button.isEnabled = isValidEmail && isValidPassword
-        button.alpha = if (isValidEmail && isValidPassword) 1.0f else 0.6f
+        updateButtonState(button, isValidEmail && isValidPassword)
     }
-    private fun updateRegisterButtonStatus(
-        button: MaterialButton,
-        name: String,
-        email: String,
-        password: String,
-        confirmPassword: String
-    ) {
+
+    private fun updateRegisterButtonStatus(button: MaterialButton) {
+        val name = nameLiveData.value ?: ""
+        val email = emailLiveData.value ?: ""
+        val password = passwordLiveData.value ?: ""
+        val confirmPassword = confirmPasswordLiveData.value ?: ""
+
         val isValidName = isValidName(name)
         val isValidEmail = isValidEmail(email)
         val isValidPassword = isValidPassword(password)
         val isValidConfirmPassword = isValidConfirmPassword(confirmPassword)
 
-        button.isEnabled = isValidEmail && isValidPassword && isValidName && isValidConfirmPassword
-        button.alpha = if (isValidEmail && isValidPassword && isValidName && isValidConfirmPassword) 1.0f else 0.6f
+        updateButtonState(button, isValidEmail && isValidPassword && isValidName && isValidConfirmPassword)
+    }
+
+    private fun updateButtonState(button: MaterialButton, isValid: Boolean) {
+        button.isEnabled = isValid
+        button.alpha = if (isValid) 1.0f else 0.6f
     }
 
     fun isValidName(name: String): Boolean {
@@ -100,7 +91,7 @@ object AuthHelper {
     }
 
     fun isValidConfirmPassword(confirmPassword: String): Boolean {
-        return confirmPassword == passwordLiveData.toString()
+        return confirmPassword == passwordLiveData.value
     }
 
     @JvmStatic
@@ -109,13 +100,8 @@ object AuthHelper {
         if (validate == true) {
             editText.doAfterTextChanged {
                 val name = it.toString().trim()
-                val isValid = name.matches(Regex("^[a-zA-Z\\s]+$"))
-                val parent = editText.parent.parent as? TextInputLayout
-                if (isValid) {
-                    parent?.error = null
-                } else {
-                    parent?.error = "Invalid Name format"
-                }
+                val isValid = isValidName(name)
+                updateInputError(editText, isValid, "Invalid Name format")
                 nameLiveData.value = name
             }
         }
@@ -127,13 +113,8 @@ object AuthHelper {
         if (validate == true) {
             editText.doAfterTextChanged {
                 val email = it.toString().trim()
-                val isValid = Patterns.EMAIL_ADDRESS.matcher(email).matches()
-                val parent = editText.parent.parent as? TextInputLayout
-                if (isValid) {
-                    parent?.error = null
-                } else {
-                    parent?.error = "Invalid email format"
-                }
+                val isValid = isValidEmail(email)
+                updateInputError(editText, isValid, "Invalid email format")
                 emailLiveData.value = email
             }
         }
@@ -145,12 +126,8 @@ object AuthHelper {
         if (validate == true) {
             editText.doAfterTextChanged {
                 val password = it.toString().trim()
-                val parent = editText.parent.parent as? TextInputLayout
-                if (password.length >= 8) {
-                    parent?.error = null
-                } else {
-                    parent?.error = "Password must be at least 8 characters long"
-                }
+                val isValid = isValidPassword(password)
+                updateInputError(editText, isValid, "Password must be at least 8 characters long")
                 passwordLiveData.value = password
             }
         }
@@ -162,14 +139,19 @@ object AuthHelper {
         if (validate == true) {
             editText.doAfterTextChanged {
                 val confirmPassword = it.toString().trim()
-                val parent = editText.parent.parent as? TextInputLayout
-                if (confirmPassword == passwordLiveData.toString()) {
-                    parent?.error = null
-                } else {
-                    parent?.error = "Password does not match"
-                }
+                val isValid = isValidConfirmPassword(confirmPassword)
+                updateInputError(editText, isValid, "Password does not match")
                 confirmPasswordLiveData.value = confirmPassword
             }
+        }
+    }
+
+    private fun updateInputError(editText: TextView, isValid: Boolean, errorMessage: String) {
+        val parent = editText.parent.parent as? TextInputLayout
+        if (isValid) {
+            parent?.error = null
+        } else {
+            parent?.error = errorMessage
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.bangkit.wellpredict.data.api.retrofit
 
 import com.bangkit.wellpredict.data.api.response.AuthResponse
+import com.bangkit.wellpredict.data.api.response.DiagnoseResponse
 import com.bangkit.wellpredict.data.api.response.SymptomsResponse
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -32,4 +33,10 @@ interface WellPredictApiService {
 
     @GET("symptoms")
     suspend fun getSymptomsList(): SymptomsResponse
+
+    @FormUrlEncoded
+    @POST("predict")
+    suspend fun diagnose(
+        @Field("symptoms") symptoms: Array<String>
+    ) : DiagnoseResponse
 }

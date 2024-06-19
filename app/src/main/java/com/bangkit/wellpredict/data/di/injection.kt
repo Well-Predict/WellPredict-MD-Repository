@@ -6,6 +6,7 @@ import com.bangkit.wellpredict.data.api.retrofit.ApiConfig
 import com.bangkit.wellpredict.data.model.User
 import com.bangkit.wellpredict.data.pref.UserPreference
 import com.bangkit.wellpredict.data.pref.dataStore
+import com.bangkit.wellpredict.data.repository.DiagnoseRepository
 import com.bangkit.wellpredict.data.repository.NewsRepository
 import com.bangkit.wellpredict.data.repository.SymptomsRepository
 import com.bangkit.wellpredict.data.repository.UserRepository
@@ -31,5 +32,12 @@ object Injection {
         val session = runBlocking { userPref.getSession().first() }
         val apiService = ApiConfig.getWellPredictApiService(session.accessToken)
         return UserRepository.getInstance(apiService, userPref)
+    }
+
+    fun provideDiagnoseRepository(context: Context): DiagnoseRepository {
+        val userPref = UserPreference.getInstance(context.dataStore)
+        val session = runBlocking { userPref.getSession().first() }
+        val apiService = ApiConfig.getWellPredictApiService(session.accessToken)
+        return DiagnoseRepository.getInstance(apiService, userPref)
     }
 }

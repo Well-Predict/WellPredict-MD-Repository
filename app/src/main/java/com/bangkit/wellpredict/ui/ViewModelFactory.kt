@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.bangkit.wellpredict.data.di.Injection
+import com.bangkit.wellpredict.data.repository.DiagnoseRepository
 import com.bangkit.wellpredict.data.repository.NewsRepository
 import com.bangkit.wellpredict.data.repository.SymptomsRepository
 import com.bangkit.wellpredict.data.repository.UserRepository
@@ -19,6 +20,7 @@ class ViewModelFactory(
     private val newsRepository: NewsRepository,
     private val symptomsRepository: SymptomsRepository,
     private val userRepository: UserRepository,
+    private val diagnoseRepository: DiagnoseRepository
 ) : ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
@@ -37,7 +39,7 @@ class ViewModelFactory(
                 HomeViewModel(newsRepository, userRepository) as T
             }
             modelClass.isAssignableFrom(DiagnoseViewModel::class.java) -> {
-                DiagnoseViewModel(symptomsRepository) as T
+                DiagnoseViewModel(symptomsRepository, diagnoseRepository) as T
             }
             modelClass.isAssignableFrom(DiagnoseSearchViewModel::class.java) -> {
                 DiagnoseSearchViewModel(symptomsRepository) as T
@@ -60,7 +62,8 @@ class ViewModelFactory(
                     INSTANCE = ViewModelFactory(
                         Injection.provideNewsRepository(context),
                         Injection.provideSymptomsRepository(context),
-                        Injection.provideUserRepository(context)
+                        Injection.provideUserRepository(context),
+                        Injection.provideDiagnoseRepository(context)
                     )
                 }
             }
