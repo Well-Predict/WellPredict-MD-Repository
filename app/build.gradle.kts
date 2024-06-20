@@ -69,6 +69,8 @@ dependencies {
     implementation (libs.hdodenhof.circleimageview)
     implementation (libs.popup.dialog)
     implementation (libs.androidx.databinding.runtime)
+    implementation (libs.androidx.work.runtime.ktx)
+    implementation (libs.loopj.android.async.http)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

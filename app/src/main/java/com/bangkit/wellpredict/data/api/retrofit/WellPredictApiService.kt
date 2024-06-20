@@ -26,10 +26,11 @@ interface WellPredictApiService {
         @Field("password") password: String
     ): AuthResponse
 
+    @POST("logout")
+    suspend fun logout() : AuthResponse
+
     @POST("token")
-    suspend fun refreshToken(
-        @Header("Authorization") refreshToken: String
-    ) : AuthResponse
+    suspend fun refreshToken() : AuthResponse
 
     @GET("symptoms")
     suspend fun getSymptomsList(): SymptomsResponse

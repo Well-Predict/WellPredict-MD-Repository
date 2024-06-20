@@ -22,7 +22,6 @@ object Injection {
     fun provideSymptomsRepository(context: Context): SymptomsRepository {
         val userPref = UserPreference.getInstance(context.dataStore)
         val session = runBlocking { userPref.getSession().first() }
-
         val apiService = ApiConfig.getWellPredictApiService(session.accessToken)
         val symptomPref = SymptomPreference.getInstance(context)
         return SymptomsRepository.getInstance(apiService, symptomPref)

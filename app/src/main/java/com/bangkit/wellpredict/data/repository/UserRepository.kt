@@ -1,6 +1,5 @@
 package com.bangkit.wellpredict.data.repository
 
-import SymptomPreference
 import android.util.Log
 import androidx.lifecycle.liveData
 import com.bangkit.wellpredict.data.ResultState
@@ -27,6 +26,15 @@ class UserRepository(
     }
 
     suspend fun logout() {
+        try {
+            val successResponse = wellPredictApiService.logout()
+        } catch (e: HttpException) {
+            val errorBody = e.response()?.errorBody()?.string()
+            val errorResponse = Gson().fromJson(errorBody, ErrorResponse::class.java)
+            Log.d(TAG, "Logout error: $errorResponse")
+        } catch (e: Exception) {
+            Log.e(TAG, "Logout exception: ${e.message}", e)
+        }
         userPreference.logout()
     }
 
@@ -49,7 +57,6 @@ class UserRepository(
 
     fun login(email: String, password: String) = liveData(Dispatchers.IO) {
         emit(ResultState.Loading)
-
         try {
             val successResponse = wellPredictApiService.login(email, password)
             emit(ResultState.Success(successResponse))
