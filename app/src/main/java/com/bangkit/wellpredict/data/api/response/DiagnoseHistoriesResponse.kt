@@ -21,11 +21,23 @@ data class HistoryItem(
 	@field:SerializedName("symptoms")
 	val symptoms: List<String?>? = null,
 
+	@field:SerializedName("treatment")
+	val treatment: String? = null,
+
 	@field:SerializedName("disease")
 	val disease: String? = null,
 
+	@field:SerializedName("user_id")
+	val userId: Int? = null,
+
+	@field:SerializedName("causes")
+	val causes: String? = null,
+
 	@field:SerializedName("name")
 	val name: String? = null,
+
+	@field:SerializedName("description")
+	val description: String? = null,
 
 	@field:SerializedName("created_at")
 	val createdAt: String? = null,

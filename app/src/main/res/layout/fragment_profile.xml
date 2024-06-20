@@ -1,56 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="25dp"
-    tools:context=".ui.profile.ProfileFragment">
+    android:padding="25dp">
 
-    <LinearLayout
-        android:id="@+id/linearLayout1"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        tools:context=".ui.profile.ProfileFragment">
 
-        <TextView
-            style="@style/TextContent.Regular.ExtraLarge"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/profile"
-            android:layout_marginEnd="16dp" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            />
+            <TextView
+                style="@style/TextContent.Regular.ExtraLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="@string/profile" />
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/setting_button"
-            android:src="@drawable/ic_settings_24dp"
-            android:background="@null"
-            app:tint="?attr/colorOnPrimary"/>
-    </LinearLayout>
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@null"
+                android:contentDescription="@string/setting_button"
+                android:src="@drawable/ic_settings_24dp"
+                app:tint="?attr/colorOnPrimary" />
+        </LinearLayout>
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="70dp"
-        android:padding="10dp"
-        android:background="@drawable/bg_circle"
-        android:src="@drawable/chamber_cat"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout1" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="70dp"
+            android:background="@drawable/bg_circle"
+            android:padding="10dp"
+            android:src="@drawable/chamber_cat"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout1" />
 
         <TextView
             android:id="@+id/tv_user_name"
@@ -61,46 +64,46 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile_image" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/bg_icon_border"
-        android:orientation="vertical"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_user_name">
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_icon_border"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_user_name">
 
-        <TextView
-            style="@style/TextContent.Regular.Small"
-            android:text="@string/user_email" />
+            <TextView
+                style="@style/TextContent.Regular.Small"
+                android:text="@string/user_email" />
 
-        <TextView
-            style="@style/TextContent.Regular.Small"
-            android:layout_marginTop="14dp"
-            android:text="@string/hidden_password" />
+            <TextView
+                style="@style/TextContent.Regular.Small"
+                android:layout_marginTop="14dp"
+                android:text="@string/hidden_password" />
 
-        <TextView
-            style="@style/TextContent.Regular.Small"
-            android:layout_marginTop="14dp"
-            android:text="@string/user_age" />
+            <TextView
+                style="@style/TextContent.Regular.Small"
+                android:layout_marginTop="14dp"
+                android:text="@string/user_age" />
 
-        <TextView
-            style="@style/TextContent.Regular.Small"
-            android:layout_marginTop="14dp"
-            android:text="@string/user_location" />
-    </LinearLayout>
+            <TextView
+                style="@style/TextContent.Regular.Small"
+                android:layout_marginTop="14dp"
+                android:text="@string/user_location" />
+        </LinearLayout>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_logout"
-        style="@style/Widget.MyApp.LogoutButton"
-        android:layout_marginTop="20dp"
-        android:text="@string/log_out"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_logout"
+            style="@style/Widget.MyApp.LogoutButton"
+            android:layout_marginTop="20dp"
+            android:text="@string/log_out"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

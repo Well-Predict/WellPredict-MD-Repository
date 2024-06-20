@@ -20,7 +20,8 @@ class SymptomPreference private constructor(private val dataStore: DataStore<Pre
     // Menyimpan daftar symptoms ke DataStore
     suspend fun saveSelectedSymptom(symptom: String) {
         dataStore.edit { preferences ->
-            val currentSymptoms = preferences[SYMPTOMS_KEY]?.split(",")?.toMutableList() ?: mutableListOf()
+            val currentSymptoms =
+                preferences[SYMPTOMS_KEY]?.split(",")?.toMutableList() ?: mutableListOf()
             if (!currentSymptoms.contains(symptom)) {
                 currentSymptoms.add(symptom)
                 preferences[SYMPTOMS_KEY] = currentSymptoms.joinToString(",")
@@ -30,7 +31,8 @@ class SymptomPreference private constructor(private val dataStore: DataStore<Pre
 
     suspend fun removeSelectedSymptom(symptom: String) {
         dataStore.edit { preferences ->
-            val currentSymptoms = preferences[SYMPTOMS_KEY]?.split(",")?.toMutableList() ?: mutableListOf()
+            val currentSymptoms =
+                preferences[SYMPTOMS_KEY]?.split(",")?.toMutableList() ?: mutableListOf()
             if (currentSymptoms.remove(symptom)) {
                 // Hapus semua gejala jika tidak ada yang tersisa
                 if (currentSymptoms.isEmpty()) {

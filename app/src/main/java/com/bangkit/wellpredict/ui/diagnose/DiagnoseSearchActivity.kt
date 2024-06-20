@@ -34,11 +34,11 @@ class DiagnoseSearchActivity : AppCompatActivity() {
         setupSearchView()
 
         viewModel.getSymptomsList().observe(this) { result ->
-            if (result != null){
+            if (result != null) {
                 when (result) {
                     is ResultState.Loading -> {
-//                        lottieLoadingAnimation(true)
                     }
+
                     is ResultState.Success -> {
                         originalList = result.data ?: emptyList()
                         if (binding.searchView.query.isNullOrBlank()) {
@@ -49,9 +49,8 @@ class DiagnoseSearchActivity : AppCompatActivity() {
                         }
 
                     }
+
                     is ResultState.Error -> {
-//                        lottieLoadingAnimation(false)
-//                        showAlert(result.error,)
                     }
                 }
             }
@@ -67,8 +66,8 @@ class DiagnoseSearchActivity : AppCompatActivity() {
         binding.rvSymptomList.visibility = View.GONE
     }
 
-    private fun setupSearchView(){
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+    private fun setupSearchView() {
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 TODO("Not yet implemented")
             }
@@ -90,12 +89,13 @@ class DiagnoseSearchActivity : AppCompatActivity() {
         if (query.isNullOrBlank()) {
             adapter.submitList(originalList)
         } else {
-            val filteredList = originalList.filter { it?.symptom?.contains(query, ignoreCase = true) ?: false }
+            val filteredList =
+                originalList.filter { it?.symptom?.contains(query, ignoreCase = true) ?: false }
             adapter.submitList(filteredList)
         }
     }
 
-    fun onBackButtonClick(view: View) {
+    fun onBackButtonClick(@Suppress("UNUSED_PARAMETER") view: View) {
         finish()
     }
 }

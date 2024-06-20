@@ -47,6 +47,24 @@ class DiagnoseRepository(
         }
     }
 
+    fun getFirstHistory() = liveData(Dispatchers.IO){
+        emit(ResultState.Loading)
+        try {
+            val successResponse = wellPredictApiService.getHistories()
+            val firstHistory = successResponse.historyItem?.firstOrNull()
+            Log.d(TAG, "getFirstHistory: $firstHistory")
+            emit(ResultState.Success(firstHistory))
+        } catch (e: HttpException) {
+            val errorBody = e.response()?.errorBody()?.string()
+            val errorResponse = Gson().fromJson(errorBody, ErrorResponse::class.java)
+            emit(ResultState.Error(errorResponse?.message ?: R.string.failed_fetching.toString()))
+            Log.d(TAG, "Get Histories error: $errorResponse")
+        } catch (e: Exception) {
+            emit(ResultState.Error(e.localizedMessage ?: R.string.failed_communicate.toString()))
+            Log.e(TAG, "Get Histories exception: ${e.message}", e)
+        }
+    }
+
     companion object {
         private const val TAG = "DiagnoseRepository"
         @Volatile

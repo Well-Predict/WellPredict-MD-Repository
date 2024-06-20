@@ -38,7 +38,7 @@ class ViewModelFactory(
                 NewsViewModel(newsRepository) as T
             }
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
-                HomeViewModel(newsRepository, userRepository) as T
+                HomeViewModel(newsRepository, userRepository, diagnoseRepository) as T
             }
             modelClass.isAssignableFrom(DiagnoseViewModel::class.java) -> {
                 DiagnoseViewModel(symptomsRepository, diagnoseRepository) as T

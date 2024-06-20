@@ -1,37 +1,35 @@
-package com.bangkit.wellpredict
+package com.bangkit.wellpredict.ui
 
-import TokenRefreshWorker
 import android.app.Application
 import androidx.work.Constraints
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.NetworkType
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
+import com.bangkit.wellpredict.utils.TokenRefreshWorker
 import java.util.concurrent.TimeUnit
 
-class MyApplication : Application() {
+class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
 
-        scheduleTokenRefresh()
+        setupTokenRefreshWorker()
     }
 
-    private fun scheduleTokenRefresh() {
+    private fun setupTokenRefreshWorker() {
         val constraints = Constraints.Builder()
             .setRequiredNetworkType(NetworkType.CONNECTED)
             .build()
 
-        val tokenRefreshRequest = PeriodicWorkRequestBuilder<TokenRefreshWorker>(
-            15, TimeUnit.MINUTES // Interval setiap 15 menit
-        )
+        val tokenRefreshWorkRequest = PeriodicWorkRequestBuilder<TokenRefreshWorker>(15, TimeUnit.MINUTES)
             .setConstraints(constraints)
             .build()
 
-        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+        WorkManager.getInstance(applicationContext).enqueueUniquePeriodicWork(
             TokenRefreshWorker.TAG,
-            ExistingPeriodicWorkPolicy.REPLACE, // Ganti jika ada pekerjaan sebelumnya dengan nama yang sama
-            tokenRefreshRequest
+            ExistingPeriodicWorkPolicy.UPDATE,
+            tokenRefreshWorkRequest
         )
     }
 }

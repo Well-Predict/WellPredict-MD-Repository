@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.wellpredict.data.api.response.HistoryItem
 import com.bangkit.wellpredict.databinding.ItemHistoryBinding
+import com.bangkit.wellpredict.utils.DateHelper
 
 class HistoryAdapter() : ListAdapter<HistoryItem, HistoryAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
@@ -37,7 +38,7 @@ class HistoryAdapter() : ListAdapter<HistoryItem, HistoryAdapter.MyViewHolder>(D
         fun bind(item: HistoryItem) {
             binding.tvDiagnoseHistoryTitle.text = item.disease
             binding.tvDiagnoseHistoryDate.text = item.createdAt
-//            binding.tvDiagnoseHistoryDate.text = DateHelper().convertTime(item.createdAt.toString())
+            binding.tvDiagnoseHistoryDate.text = DateHelper.formatDateToLocal(item.createdAt.toString())
         }
     }
 

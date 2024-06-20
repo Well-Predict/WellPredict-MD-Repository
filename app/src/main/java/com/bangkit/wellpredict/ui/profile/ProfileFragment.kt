@@ -13,6 +13,7 @@ import com.bangkit.wellpredict.data.ResultState
 import com.bangkit.wellpredict.databinding.FragmentProfileBinding
 import com.bangkit.wellpredict.ui.ViewModelFactory
 import com.bangkit.wellpredict.ui.auth.LoginActivity
+import com.bangkit.wellpredict.utils.DialogHelper
 import com.saadahmedev.popupdialog.PopupDialog
 import com.saadahmedev.popupdialog.listener.StandardDialogActionListener
 
@@ -46,7 +47,6 @@ class ProfileFragment : Fragment() {
     }
 
     private fun logoutDialog() {
-        // Tampilkan dialog konfirmasi logout
         PopupDialog.getInstance(context)
             .standardDialogBuilder()
             .createStandardDialog()
@@ -66,14 +66,15 @@ class ProfileFragment : Fragment() {
                         when (result) {
                             is ResultState.Loading -> {
                             }
+
                             is ResultState.Success -> {
                                 dialog.dismiss()
-
                                 startActivity(Intent(requireContext(), LoginActivity::class.java))
                                 requireActivity().finish()
                             }
+
                             is ResultState.Error -> {
-                                errorDialog()
+                                DialogHelper.errorDialog(requireContext(), result.error)
                                 dialog.dismiss()
                             }
                         }
@@ -84,17 +85,6 @@ class ProfileFragment : Fragment() {
                     dialog.dismiss()
                 }
             })
-            .show()
-    }
-    private fun errorDialog() {
-        PopupDialog.getInstance(context)
-            .statusDialogBuilder()
-            .createErrorDialog()
-            .setHeading("Uh-Oh")
-            .setActionButtonText("Okay")
-            .setDescription("Unexpected error occurred." +
-                    " Try again later.")
-            .build(Dialog::dismiss)
             .show()
     }
 }
