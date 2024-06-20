@@ -15,11 +15,11 @@
     <string name="greetings_title">Hey,</string>
     <string name="header_background">Header Background</string>
     <string name="logo_image">Logo Image</string>
-    <string name="news_see_all">See All</string>
+    <string name="see_all">See All</string>
     <string name="time_icon">Time Icon</string>
     <string name="news_time">10h ago</string>
-    <string name="diagnose_history_title">Headache</string>
-    <string name="diagnose_history_date">Yesterday, 12 May 2024</string>
+    <string name="diagnose_history_title">Gastroenteritis</string>
+    <string name="diagnose_history_date">1 June 2024, 5.40AM</string>
     <string name="diagnose_history_section_title">Diagnose History</string>
     <string name="icon_back">Icon Back</string>
     <string name="search">Search</string>
@@ -34,7 +34,7 @@
     <string name="register">Register</string>
     <string name="nama_lengkap">Nama Lengkap</string>
     <string name="confirm_password">Confirm Password</string>
-    <string name="add_symptom">Add symptom</string>
+    <string name="add_symptom">Click to add symptom</string>
     <string name="diagnose">Diagnose</string>
     <string name="symptom_title">Symptom Title</string>
     <string name="username">Username</string>
@@ -50,5 +50,25 @@
     <string name="login_here">Login here</string>
     <string name="failed_fetching">Failed to Fetching Data From Server</string>
     <string name="failed_communicate">Failed to communicate with server</string>
+    <string name="see_details">See Details</string>
+    <string name="diagnose_result_greetings">This is a diagnosis of some of the symptoms you give.</string>
+    <string name="user_greetings">Hi, Rifqi Aditya</string>
+    <string name="causes_title">Causes</string>
+    <string name="causes_description">Viruses (e.g., norovirus), bacteria (e.g., E. coli), parasites, and contaminated food or water.</string>
+    <string name="treatment_title">Treatment</string>
+    <string name="treatment_description">Hydration, rest, and, in some cases, antibiotics or antiviral medications.</string>
+    <string name="disease_description">Weakness in the legs can be caused by many different conditions, including amyotrophic lateral sclerosis (ALS or called Lou Gehrig’s disease), bulging/herniated (slipped) disc, Cauda equina syndrome, Guillain-Barré syndrome, autoimmune diseases, multiple sclerosis, Parkinson’s disease, peripheral neuropathy, pinched nerve, stroke, and others.</string>
+    <string name="disease_title">Weakness in limbs</string>
+    <string name="diagnose_results">Diagnose Results</string>
+    <string name="diagnose_history_detail">Diagnose History Detail</string>
+    <string name="user_age">22 years old</string>
+    <string name="user_email">username@mail.com</string>
+    <string name="user_location">Jakarta, Indonesia</string>
+    <string name="log_out">Log out</string>
+    <string name="date">1 June 2024, 5.40AM</string>
+    <string name="date_title">Date</string>
+    <string name="symptoms_list">acute liver failure, brittle nails, abnormal menstruation</string>
+    <string name="search_symptoms">Search Symptoms</string>
+    <string name="hidden_password">***********</string>
 
 </resources>

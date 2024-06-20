@@ -13,6 +13,7 @@ import com.bangkit.wellpredict.data.ResultState
 import com.bangkit.wellpredict.databinding.FragmentHomeBinding
 import com.bangkit.wellpredict.ui.ViewModelFactory
 import com.bangkit.wellpredict.ui.auth.LoginActivity
+import com.bangkit.wellpredict.ui.history.HistoryActivity
 import com.bangkit.wellpredict.ui.news.NewsActivity
 import com.bangkit.wellpredict.ui.news.NewsWebViewActivity
 import com.bangkit.wellpredict.utils.DateHelper
@@ -45,11 +46,11 @@ class HomeFragment : Fragment() {
                 startActivity(Intent(requireContext(), LoginActivity::class.java))
             }
         }
-
         shimmerFrameLayout = binding.cardViewShimmer
 
         setupNewsCard()
-        seeAllOnClickHandler(NewsActivity::class.java)
+        setupSeeAllOnClickHandler(binding.tvNewsSeeAll, NewsActivity::class.java)
+        setupSeeAllOnClickHandler(binding.tvDiagnoseHistorySeeAll, HistoryActivity::class.java)
         return root
     }
 
@@ -87,10 +88,8 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun seeAllOnClickHandler(targetActivity: Class<out Activity>){
-        val seeAllNewsTv = binding.tvNewsSeeAll
-
-        seeAllNewsTv.setOnClickListener {
+    private fun setupSeeAllOnClickHandler(view : View,targetActivity: Class<out Activity>){
+        view.setOnClickListener {
             val intent = Intent(activity, targetActivity)
             startActivity(intent)
         }

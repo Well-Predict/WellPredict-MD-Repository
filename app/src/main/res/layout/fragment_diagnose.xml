@@ -42,6 +42,7 @@
     <TextView
         android:id="@+id/tv_add_symptom_title"
         style="@style/TextContent.SubHeading"
+        android:textSize="12sp"
         android:layout_marginTop="30dp"
         android:text="@string/add_symptomps_title"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,15 +61,12 @@
         style="@style/TextContent.Medium"
         android:background="?attr/selectableItemBackground"
         android:clickable="true"
-        android:drawablePadding="8dp"
         android:focusable="true"
-        android:gravity="center_vertical"
-        android:padding="4dp"
-        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:minHeight="48dp"
         android:text="@string/add_symptom"
-        android:textColor="@color/teal"
-        app:drawableStartCompat="@drawable/ic_add_circle_outline_24"
-        app:drawableTint="@color/teal"
+        android:textColor="#00838F"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -79,7 +77,6 @@
         style="@style/TextContent.Bold"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="20dp"
         android:backgroundTint="@color/teal"
         android:text="@string/diagnose_button_title"
         android:textColor="@color/white"
@@ -87,6 +84,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_add_symptom"
-        app:cornerRadius="6dp"/>
+        app:cornerRadius="6dp"
+        tools:ignore="VisualLintButtonSize" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

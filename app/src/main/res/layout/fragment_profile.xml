@@ -19,11 +19,16 @@
 
         <TextView
             style="@style/TextContent.Regular.ExtraLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile"
+            android:layout_marginEnd="16dp" />
+
+        <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/profile"
-            android:layout_marginEnd="16dp" />
+            />
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -51,7 +56,7 @@
             android:id="@+id/tv_user_name"
             style="@style/TextContent.Regular.Large"
             android:layout_marginTop="20dp"
-            android:text="Rifqi Aditya"
+            android:text="@string/username"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile_image" />
@@ -70,29 +75,29 @@
 
         <TextView
             style="@style/TextContent.Regular.Small"
-            android:text="rifqiaditya@gmail.com" />
+            android:text="@string/user_email" />
 
         <TextView
             style="@style/TextContent.Regular.Small"
             android:layout_marginTop="14dp"
-            android:text="***********" />
+            android:text="@string/hidden_password" />
 
         <TextView
             style="@style/TextContent.Regular.Small"
             android:layout_marginTop="14dp"
-            android:text="22 years old" />
+            android:text="@string/user_age" />
 
         <TextView
             style="@style/TextContent.Regular.Small"
             android:layout_marginTop="14dp"
-            android:text="Jakarta, Indonesia" />
+            android:text="@string/user_location" />
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_logout"
         style="@style/Widget.MyApp.LogoutButton"
         android:layout_marginTop="20dp"
-        android:text="Log out"
+        android:text="@string/log_out"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />

@@ -20,43 +20,70 @@ class DiagnoseResultActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(binding.root)
-
         supportActionBar?.hide()
 
         val symptomList = intent.getStringArrayListExtra("SYMPTOM_LIST")
+        symptomList?.let {
+            observeDiagnosisResult(it.toTypedArray())
+        }
+    }
 
-        viewModel.diagnose(symptomList!!.toTypedArray()).observe(this) { result ->
+    private fun observeDiagnosisResult(symptomList: Array<String>) {
+        viewModel.diagnose(symptomList).observe(this) { result ->
             when (result) {
                 is ResultState.Loading -> {
-                    binding.greetingsSection.visibility = View.INVISIBLE
-                    binding.diseaseResultSection.visibility = View.INVISIBLE
-                    lottieLoadingAnimation(true)
+                    binding.apply {
+                        setAllSectionsVisibility(false)
+                        lottieLoadingAnimation(true)
+                    }
                 }
                 is ResultState.Success -> {
-                    binding.greetingsSection.visibility = View.VISIBLE
-                    binding.diseaseResultSection.visibility = View.VISIBLE
-                    lottieLoadingAnimation(false)
-                    binding.tvDiseaseName.text = result.data?.disease
-                    binding.tvDiseaseDescription.text = result.data?.description
+                    binding.apply {
+                        setAllSectionsVisibility(true)
+                        lottieLoadingAnimation(false)
+                        result.data?.let {
+                            tvDiseaseName.text = it.disease
+                            tvDiseaseDescription.text = it.description
+                            tvCausesDescription.text = it.causes
+                            tvTreatmentDescription.text = it.treatment
+                        }
+                    }
                 }
                 is ResultState.Error -> {
-                    binding.greetingsSection.visibility = View.INVISIBLE
-                    binding.diseaseResultSection.visibility = View.INVISIBLE
-                    lottieLoadingAnimation(false)
-                    Toast.makeText(this, result.error.toString(), Toast.LENGTH_SHORT).show()
+                    binding.apply {
+                        setAllSectionsVisibility(false)
+                        lottieLoadingAnimation(false)
+                    }
+                    showToast(result.error)
                 }
             }
         }
     }
 
-    private fun lottieLoadingAnimation(isLoading: Boolean){
-        if (isLoading) {
-            binding.lottieLoadingAnimation.playAnimation()
-        } else {
-            binding.lottieLoadingAnimation.setVisibility(View.GONE)
+    private fun setAllSectionsVisibility(isVisible: Boolean) {
+        val visibility = if (isVisible) View.VISIBLE else View.INVISIBLE
+        binding.apply {
+            greetingsSection.visibility = visibility
+            diseaseSection.visibility = visibility
+            causesTreatmentSection.visibility = visibility
         }
+    }
+
+
+    private fun lottieLoadingAnimation(isLoading: Boolean) {
+        binding.lottieLoadingAnimation.apply {
+            if (isLoading) {
+                visibility = View.VISIBLE
+                playAnimation()
+            } else {
+                visibility = View.GONE
+            }
+        }
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     fun onBackButtonClick(view: View) {

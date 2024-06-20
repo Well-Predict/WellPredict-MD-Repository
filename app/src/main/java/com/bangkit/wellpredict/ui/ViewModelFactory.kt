@@ -13,6 +13,7 @@ import com.bangkit.wellpredict.ui.auth.RegisterViewModel
 import com.bangkit.wellpredict.ui.diagnose.DiagnoseResultViewModel
 import com.bangkit.wellpredict.ui.diagnose.DiagnoseSearchViewModel
 import com.bangkit.wellpredict.ui.diagnose.DiagnoseViewModel
+import com.bangkit.wellpredict.ui.history.HistoryViewModel
 import com.bangkit.wellpredict.ui.home.HomeViewModel
 import com.bangkit.wellpredict.ui.news.NewsViewModel
 import com.bangkit.wellpredict.ui.profile.ProfileViewModel
@@ -47,6 +48,9 @@ class ViewModelFactory(
             }
             modelClass.isAssignableFrom(DiagnoseResultViewModel::class.java) -> {
                 DiagnoseResultViewModel(diagnoseRepository) as T
+            }
+            modelClass.isAssignableFrom(HistoryViewModel::class.java) -> {
+                HistoryViewModel(diagnoseRepository) as T
             }
             modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
                 ProfileViewModel(userRepository) as T

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:paddingTop="30dp"
     android:paddingHorizontal="25dp"
-    tools:context=".ui.news.NewsActivity">
+    tools:context=".ui.history.HistoryActivity">
 
     <ImageButton
         android:id="@+id/back_button"
@@ -26,7 +26,7 @@
     <TextView
         android:id="@+id/textView"
         style="@style/TextContent.ActivityTitle"
-        android:text="@string/news_section_title"
+        android:text="@string/diagnose_history_section_title"
         android:textSize="18sp"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintBottom_toBottomOf="@+id/back_button"
@@ -36,7 +36,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_news"
+        android:id="@+id/rv_history"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

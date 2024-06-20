@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:paddingTop="30dp"
     android:paddingHorizontal="25dp"
-    tools:context=".ui.diagnose.DiagnoseResultActivity">
+    tools:context=".ui.history.HistoryDetailActivity">
 
     <ImageButton
         android:id="@+id/back_button"
@@ -25,7 +25,7 @@
     <TextView
         android:id="@+id/textView"
         style="@style/TextContent.ActivityTitle"
-        android:text="@string/diagnose_results"
+        android:text="@string/diagnose_history_detail"
         android:textSize="18sp"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintBottom_toBottomOf="@+id/back_button"
@@ -34,25 +34,51 @@
         app:layout_constraintTop_toTopOf="@+id/back_button" />
 
     <LinearLayout
-        android:id="@+id/greetings_section"
+        android:id="@+id/date_section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <TextView
-            android:id="@+id/tv_user_name"
-            style="@style/TextContent.Bold.Teal"
-            android:text="@string/user_greetings"
+            style="@style/TextContent.SubHeading"
+            android:text="@string/date_title"
             android:textSize="14sp" />
-
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
         <TextView
             style="@style/TextContent.SubHeading"
             android:textSize="14sp"
+            android:text="@string/date" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/symtomps_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date_section">
+
+        <TextView
+            style="@style/TextContent.Medium"
+            android:textSize="14sp"
             android:text="@string/diagnose_result_greetings" />
+
+        <TextView
+            style="@style/TextContent.Medium"
+            android:layout_marginTop="10dp"
+            android:textSize="14sp"
+            android:textColor="@color/teal"
+            android:text="@string/symptoms_list"/>
     </LinearLayout>
 
     <LinearLayout
@@ -64,7 +90,7 @@
         android:backgroundTint="@color/teal"
         android:orientation="vertical"
         android:padding="18dp"
-        app:layout_constraintTop_toBottomOf="@+id/greetings_section"
+        app:layout_constraintTop_toBottomOf="@+id/symtomps_section"
         tools:layout_editor_absoluteX="25dp">
 
         <TextView
@@ -118,17 +144,4 @@
             android:text="@string/treatment_description"
             android:textColor="@color/argent" />
     </LinearLayout>
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottie_loading_animation"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/heart_animation" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
