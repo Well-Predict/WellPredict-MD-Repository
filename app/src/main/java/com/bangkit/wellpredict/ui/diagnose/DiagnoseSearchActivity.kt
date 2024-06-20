@@ -64,7 +64,7 @@ class DiagnoseSearchActivity : AppCompatActivity() {
         binding.rvSymptomList.layoutManager = layoutManager
         adapter = SymptomAdapter()
         binding.rvSymptomList.adapter = adapter
-        binding.rvSymptomList.visibility = View.GONE // Awalnya RecyclerView tidak terlihat
+        binding.rvSymptomList.visibility = View.GONE
     }
 
     private fun setupSearchView(){

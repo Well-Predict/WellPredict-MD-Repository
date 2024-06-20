@@ -36,12 +36,8 @@ class HistoryActivity : AppCompatActivity() {
         binding.rvHistory.layoutManager = layoutManager
         val adapter = HistoryAdapter()
 
-        // Set listener untuk menangkap klik item pada adapter
         adapter.setOnItemClickListener { historyItem ->
-            // Buat Intent untuk Activity tujuan (misalnya DetailActivity)
             val intent = Intent(this, HistoryDetailActivity::class.java)
-
-            // Kirim data ArrayList<HistoryItem> menggunakan putParcelableArrayListExtra
             val historyItems = ArrayList<HistoryItem>()
             historyItems.add(historyItem)
             intent.putParcelableArrayListExtra("HISTORY_ITEMS", historyItems)

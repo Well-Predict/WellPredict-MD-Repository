@@ -96,7 +96,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun newsCardOnClickHandler(newsUrl: String) {
-        val newsCard = binding.newsCard
+        val newsCard = binding.newsCardView
         newsCard.setOnClickListener {
             val intent = Intent(activity, NewsWebViewActivity::class.java)
             intent.putExtra("NEWS_URL", newsUrl)

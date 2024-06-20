@@ -25,12 +25,6 @@
             android:name=".ui.diagnose.DiagnoseResultActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.auth.RegisterDummyActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.auth.LoginDummyActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.diagnose.DiagnoseSearchActivity"
             android:exported="false" />
         <activity

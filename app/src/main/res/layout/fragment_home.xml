@@ -165,7 +165,6 @@
                         app:layout_constraintGuide_percent="0.65" />
 
                     <LinearLayout
-                        android:id="@+id/news_card"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:clickable="true"
@@ -261,7 +260,6 @@
                     android:layout_margin="20dp">
 
                     <LinearLayout
-                        android:id="@+id/linearLayout3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
@@ -270,13 +268,11 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
-                            android:id="@+id/tv_diagnose_history_title"
                             style="@style/TextContent.Bold"
                             android:text="@string/diagnose_history_title"
                             android:textSize="14sp" />
 
                         <TextView
-                            android:id="@+id/tv_diagnose_history_date"
                             style="@style/TextContent.Medium"
                             android:drawablePadding="4dp"
                             android:text="@string/diagnose_history_date"
@@ -285,7 +281,6 @@
                     </LinearLayout>
 
                     <TextView
-                        android:id="@+id/textView4"
                         style="@style/TextContent.Medium"
                         android:textSize="12sp"
                         android:text="@string/see_details"
