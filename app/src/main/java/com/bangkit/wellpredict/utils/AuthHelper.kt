@@ -71,7 +71,10 @@ object AuthHelper {
         val isValidPassword = isValidPassword(password)
         val isValidConfirmPassword = isValidConfirmPassword(confirmPassword)
 
-        updateButtonState(button, isValidEmail && isValidPassword && isValidName && isValidConfirmPassword)
+        updateButtonState(
+            button,
+            isValidEmail && isValidPassword && isValidName && isValidConfirmPassword
+        )
     }
 
     private fun updateButtonState(button: MaterialButton, isValid: Boolean) {

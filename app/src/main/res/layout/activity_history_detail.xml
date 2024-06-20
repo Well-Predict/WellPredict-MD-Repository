@@ -5,8 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="30dp"
     android:paddingHorizontal="25dp"
+    android:paddingTop="30dp"
     tools:context=".ui.history.HistoryDetailActivity">
 
     <ImageButton
@@ -27,9 +27,9 @@
         style="@style/TextContent.ActivityTitle"
         android:text="@string/diagnose_history_detail"
         android:textSize="18sp"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintBottom_toBottomOf="@+id/back_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/back_button" />
 
@@ -47,15 +47,17 @@
             style="@style/TextContent.SubHeading"
             android:text="@string/date_title"
             android:textSize="14sp" />
+
         <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            />
+            android:layout_weight="1" />
+
         <TextView
+            android:id="@+id/tv_history_date"
             style="@style/TextContent.SubHeading"
-            android:textSize="14sp"
-            android:text="@string/date" />
+            android:text="@string/date"
+            android:textSize="14sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -70,15 +72,15 @@
 
         <TextView
             style="@style/TextContent.Medium"
-            android:textSize="14sp"
-            android:text="@string/diagnose_result_greetings" />
+            android:text="@string/diagnose_result_greetings"
+            android:textSize="14sp" />
 
         <TextView
             style="@style/TextContent.Medium"
             android:layout_marginTop="10dp"
-            android:textSize="14sp"
+            android:text="@string/symptoms_list"
             android:textColor="@color/teal"
-            android:text="@string/symptoms_list"/>
+            android:textSize="14sp" />
     </LinearLayout>
 
     <LinearLayout

@@ -30,7 +30,7 @@ interface WellPredictApiService {
     suspend fun logout() : AuthResponse
 
     @POST("token")
-    suspend fun refreshToken() : AuthResponse
+    suspend fun refreshAccessToken() : AuthResponse
 
     @GET("symptoms")
     suspend fun getSymptomsList(): SymptomsResponse

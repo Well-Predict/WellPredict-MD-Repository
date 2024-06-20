@@ -17,7 +17,7 @@ import retrofit2.HttpException
 
 class UserRepository(
     private val wellPredictApiService: WellPredictApiService,
-    private val userPreference: UserPreference
+    private val userPreference: UserPreference,
 ) {
 
     suspend fun saveSession(user: User) {
@@ -47,7 +47,7 @@ class UserRepository(
         userPreference.logout()
     }
 
-    fun register(name : String, email: String, password: String) = liveData(Dispatchers.IO) {
+    fun register(name: String, email: String, password: String) = liveData(Dispatchers.IO) {
         emit(ResultState.Loading)
 
         try {
@@ -79,14 +79,15 @@ class UserRepository(
             emit(ResultState.Error("Failed to communicate with server"))
         }
     }
-    
+
     companion object {
         private const val TAG = "UserRepository"
+
         @Volatile
         private var instance: UserRepository? = null
         fun getInstance(
             wellPredictApiService: WellPredictApiService,
-            userPreference: UserPreference
+            userPreference: UserPreference,
         ): UserRepository =
             instance ?: synchronized(this) {
                 instance ?: UserRepository(wellPredictApiService, userPreference)

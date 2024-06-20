@@ -174,7 +174,7 @@
                     android:text="@string/already_have_an_account" />
 
                 <TextView
-                    android:id="@+id/tv_register"
+                    android:id="@+id/tv_login"
                     style="@style/TextContent.Regular.Medium"
                     android:layout_marginStart="4dp"
                     android:clickable="true"

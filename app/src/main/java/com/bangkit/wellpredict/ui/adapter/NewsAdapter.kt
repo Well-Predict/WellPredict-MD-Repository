@@ -35,7 +35,7 @@ class NewsAdapter : ListAdapter<ArticlesItem, NewsAdapter.MyViewHolder>(DIFF_CAL
                 .into(binding.ivNewsImage)
             binding.tvNewsAuthor.text = item.source?.name
             binding.tvNewsTitle.text = item.title
-            binding.tvNewsUploadTime.text = DateHelper().convertTime(item.publishedAt.toString())
+            binding.tvNewsUploadTime.text = DateHelper.convertTime(item.publishedAt.toString())
         }
     }
 
