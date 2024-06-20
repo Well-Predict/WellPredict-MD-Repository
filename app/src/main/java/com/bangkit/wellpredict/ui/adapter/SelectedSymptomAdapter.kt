@@ -21,8 +21,8 @@ class SelectedSymptomAdapter(private val onRemoveSymptom: (String) -> Unit): Lis
 
     inner class MyViewHolder(private val binding: ItemSelectedSymptomBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(symptom: String) {
-            binding.chipSymptom.text = symptom
-            binding.chipSymptom.setOnCloseIconClickListener {
+            binding.tvSymptomTitle.text = symptom
+            binding.tvSymptomTitle.setOnCloseIconClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     val removeSymptom = getItem(position)

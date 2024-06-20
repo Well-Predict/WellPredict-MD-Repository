@@ -9,16 +9,16 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.bangkit.wellpredict.R
-import com.bumptech.glide.Glide
-import com.facebook.shimmer.ShimmerFrameLayout
 import com.bangkit.wellpredict.data.ResultState
 import com.bangkit.wellpredict.databinding.FragmentHomeBinding
 import com.bangkit.wellpredict.ui.ViewModelFactory
 import com.bangkit.wellpredict.ui.auth.LoginActivity
+import com.bangkit.wellpredict.ui.history.HistoryActivity
 import com.bangkit.wellpredict.ui.news.NewsActivity
 import com.bangkit.wellpredict.ui.news.NewsWebViewActivity
 import com.bangkit.wellpredict.utils.DateHelper
+import com.bumptech.glide.Glide
+import com.facebook.shimmer.ShimmerFrameLayout
 
 
 class HomeFragment : Fragment() {
@@ -46,11 +46,11 @@ class HomeFragment : Fragment() {
                 startActivity(Intent(requireContext(), LoginActivity::class.java))
             }
         }
-
         shimmerFrameLayout = binding.cardViewShimmer
 
         setupNewsCard()
-        seeAllOnClickHandler(NewsActivity::class.java)
+        setupSeeAllOnClickHandler(binding.tvNewsSeeAll, NewsActivity::class.java)
+        setupSeeAllOnClickHandler(binding.tvDiagnoseHistorySeeAll, HistoryActivity::class.java)
         return root
     }
 
@@ -88,17 +88,15 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun seeAllOnClickHandler(targetActivity: Class<out Activity>){
-        val seeAllNewsTv = binding.tvNewsSeeAll
-
-        seeAllNewsTv.setOnClickListener {
+    private fun setupSeeAllOnClickHandler(view : View,targetActivity: Class<out Activity>){
+        view.setOnClickListener {
             val intent = Intent(activity, targetActivity)
             startActivity(intent)
         }
     }
 
     private fun newsCardOnClickHandler(newsUrl: String) {
-        val newsCard = binding.newsCard
+        val newsCard = binding.newsCardView
         newsCard.setOnClickListener {
             val intent = Intent(activity, NewsWebViewActivity::class.java)
             intent.putExtra("NEWS_URL", newsUrl)

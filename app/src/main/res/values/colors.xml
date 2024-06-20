@@ -3,11 +3,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="teal">#0B8FAC</color>
-    <color name="argent">#888888</color>
+    <color name="argent">#757575</color>
     <color name="nightRider">#323232</color>
     <color name="charcoal">#494949</color>
     <color name="lightGray">#EDEDED</color>
-    <color name="lightCyan">#82E8FF</color>
     <color name="red">#E12727</color>
     <color name="blue">#3ABEF9</color>
 </resources>

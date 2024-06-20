@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -15,13 +16,13 @@
         android:theme="@style/Theme.CapstoneBangkit"
         tools:targetApi="31">
         <activity
+            android:name=".ui.history.HistoryDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.history.HistoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.diagnose.DiagnoseResultActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.auth.RegisterDummyActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.auth.LoginDummyActivity"
             android:exported="false" />
         <activity
             android:name=".ui.diagnose.DiagnoseSearchActivity"
@@ -37,7 +38,7 @@
             android:exported="false"
             android:theme="@style/Theme.NewsActivity" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="true"
             android:label="@string/title_activity_main">
             <intent-filter>

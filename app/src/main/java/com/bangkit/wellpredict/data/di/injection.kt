@@ -2,7 +2,6 @@ package com.bangkit.wellpredict.data.di
 
 import SymptomPreference
 import android.content.Context
-import android.util.Log
 import com.bangkit.wellpredict.data.api.retrofit.ApiConfig
 import com.bangkit.wellpredict.data.pref.UserPreference
 import com.bangkit.wellpredict.data.pref.dataStore
@@ -22,7 +21,6 @@ object Injection {
     fun provideSymptomsRepository(context: Context): SymptomsRepository {
         val userPref = UserPreference.getInstance(context.dataStore)
         val session = runBlocking { userPref.getSession().first() }
-
         val apiService = ApiConfig.getWellPredictApiService(session.accessToken)
         val symptomPref = SymptomPreference.getInstance(context)
         return SymptomsRepository.getInstance(apiService, symptomPref)
@@ -39,6 +37,6 @@ object Injection {
         val userPref = UserPreference.getInstance(context.dataStore)
         val session = runBlocking { userPref.getSession().first() }
         val apiService = ApiConfig.getWellPredictApiService(session.accessToken)
-        return DiagnoseRepository.getInstance(apiService, userPref)
+        return DiagnoseRepository.getInstance(apiService)
     }
 }
