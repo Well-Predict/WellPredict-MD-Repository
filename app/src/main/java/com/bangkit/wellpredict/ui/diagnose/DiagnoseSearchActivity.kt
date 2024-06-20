@@ -95,7 +95,7 @@ class DiagnoseSearchActivity : AppCompatActivity() {
         }
     }
 
-    fun onBackButtonClick(view: View) {
+    fun onBackButtonClick(@Suppress("UNUSED_PARAMETER") view: View) {
         finish()
     }
 }
