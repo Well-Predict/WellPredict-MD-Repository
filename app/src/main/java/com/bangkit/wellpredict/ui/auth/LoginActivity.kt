@@ -9,6 +9,7 @@ import com.bangkit.wellpredict.data.ResultState
 import com.bangkit.wellpredict.data.model.User
 import com.bangkit.wellpredict.databinding.ActivityLoginBinding
 import com.bangkit.wellpredict.ui.ViewModelFactory
+import com.bangkit.wellpredict.ui.main.MainActivity
 import com.bangkit.wellpredict.utils.AuthHelper
 
 
@@ -47,6 +48,7 @@ class LoginActivity : AppCompatActivity() {
                             val accessToken = result.data.data?.accesToken.toString()
                             val refreshToken = result.data.data?.refreshToken.toString()
                             viewModel.saveSession(User(email, accessToken, refreshToken))
+                            startActivity(Intent(this, MainActivity::class.java))
                             Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
                         }
                         is ResultState.Error -> {

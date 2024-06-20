@@ -20,7 +20,7 @@ class DiagnoseRepository(
 
         try {
             val successResponse = wellPredictApiService.diagnose(symptom)
-            emit(ResultState.Success(successResponse))
+            emit(ResultState.Success(successResponse.data?.result))
         } catch (e: HttpException) {
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, ErrorResponse::class.java)

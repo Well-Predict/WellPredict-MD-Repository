@@ -4,6 +4,7 @@ import SymptomPreference
 import android.util.Log
 import androidx.datastore.core.IOException
 import androidx.lifecycle.liveData
+import com.bangkit.wellpredict.R
 import com.bangkit.wellpredict.data.ResultState
 import com.bangkit.wellpredict.data.api.response.ErrorResponse
 import com.bangkit.wellpredict.data.api.retrofit.WellPredictApiService
@@ -27,11 +28,11 @@ class SymptomsRepository(
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, ErrorResponse::class.java)
             Log.d(TAG, "Http Exception: $errorResponse")
-            emit(ResultState.Error(errorResponse.errors?.message ?: "Failed to Fetching Data From Server"))
+            emit(ResultState.Error(errorResponse.errors?.message ?: R.string.failed_fetching.toString()))
         }
         catch (e: Exception) {
             Log.d(TAG, "Exception: $e")
-            emit(ResultState.Error(e.localizedMessage ?: "Failed to communicate with server"))
+            emit(ResultState.Error(e.localizedMessage ?: R.string.failed_communicate.toString()))
         }
     }
 

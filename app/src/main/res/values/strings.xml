@@ -48,4 +48,7 @@
     <string name="didn_t_have_an_account_yet">Didn’t have an account yet?</string>
     <string name="already_have_an_account">Already have an account?</string>
     <string name="login_here">Login here</string>
+    <string name="failed_fetching">Failed to Fetching Data From Server</string>
+    <string name="failed_communicate">Failed to communicate with server</string>
+
 </resources>

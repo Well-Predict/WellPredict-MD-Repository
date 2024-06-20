@@ -2,14 +2,17 @@ package com.bangkit.wellpredict.data.repository
 
 import android.util.Log
 import androidx.lifecycle.liveData
+import com.bangkit.wellpredict.R
 import com.bangkit.wellpredict.data.ResultState
 import com.bangkit.wellpredict.data.api.response.ErrorResponse
+import com.bangkit.wellpredict.data.api.retrofit.ApiConfig
 import com.bangkit.wellpredict.data.api.retrofit.WellPredictApiService
 import com.bangkit.wellpredict.data.model.User
 import com.bangkit.wellpredict.data.pref.UserPreference
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import retrofit2.HttpException
 
 class UserRepository(
@@ -25,14 +28,20 @@ class UserRepository(
         return userPreference.getSession()
     }
 
-    suspend fun logout() {
+    fun logout() = liveData(Dispatchers.IO) {
+        emit(ResultState.Loading)
         try {
-            val successResponse = wellPredictApiService.logout()
+            val refreshToken = userPreference.getSession().first().refreshToken
+            val successResponse = ApiConfig.getWellPredictApiService(refreshToken).logout()
+            Log.d(TAG, "Logout Success: $successResponse")
+            emit(ResultState.Success(successResponse))
         } catch (e: HttpException) {
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, ErrorResponse::class.java)
+            emit(ResultState.Error(errorResponse?.message ?: R.string.failed_fetching.toString()))
             Log.d(TAG, "Logout error: $errorResponse")
         } catch (e: Exception) {
+            emit(ResultState.Error(e.localizedMessage ?: R.string.failed_communicate.toString()))
             Log.e(TAG, "Logout exception: ${e.message}", e)
         }
         userPreference.logout()

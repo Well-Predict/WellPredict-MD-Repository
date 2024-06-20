@@ -38,7 +38,8 @@ class DiagnoseResultActivity : AppCompatActivity() {
                     binding.greetingsSection.visibility = View.VISIBLE
                     binding.diseaseResultSection.visibility = View.VISIBLE
                     lottieLoadingAnimation(false)
-                    binding.tvDiseaseName.text = result.data.diseaseData?.result.toString()
+                    binding.tvDiseaseName.text = result.data?.disease
+                    binding.tvDiseaseDescription.text = result.data?.description
                 }
                 is ResultState.Error -> {
                     binding.greetingsSection.visibility = View.INVISIBLE
