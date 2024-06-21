@@ -91,7 +91,7 @@ object AuthHelper {
     }
 
     fun isValidPassword(password: String): Boolean {
-        return password.length >= 8
+        return password.length >= 8 && password.any { it.isDigit() }
     }
 
     fun isValidConfirmPassword(confirmPassword: String): Boolean {
@@ -131,7 +131,7 @@ object AuthHelper {
             editText.doAfterTextChanged {
                 val password = it.toString().trim()
                 val isValid = isValidPassword(password)
-                updateInputError(editText, isValid, "Password must be at least 8 characters long")
+                updateInputError(editText, isValid, "Password must be at least 8 characters long & contain a digit ")
                 passwordLiveData.value = password
             }
         }

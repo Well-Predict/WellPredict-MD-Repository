@@ -23,13 +23,18 @@ class DiagnoseResultActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
+        viewModel.getSession().observe(this) { user ->
+            binding.tvUserName.text = user.name
+        }
+
         val symptomList = intent.getStringArrayListExtra("SYMPTOM_LIST")
         symptomList?.let {
-            observeDiagnosisResult(it.toTypedArray())
+            observeDiagnoseResult(it.toTypedArray())
         }
+
     }
 
-    private fun observeDiagnosisResult(symptomList: Array<String>) {
+    private fun observeDiagnoseResult(symptomList: Array<String>) {
         viewModel.diagnose(symptomList).observe(this) { result ->
             when (result) {
                 is ResultState.Loading -> {
@@ -38,6 +43,7 @@ class DiagnoseResultActivity : AppCompatActivity() {
                         lottieLoadingAnimation(true)
                     }
                 }
+
                 is ResultState.Success -> {
                     binding.apply {
                         setAllSectionsVisibility(true)
@@ -50,6 +56,7 @@ class DiagnoseResultActivity : AppCompatActivity() {
                         }
                     }
                 }
+
                 is ResultState.Error -> {
                     binding.apply {
                         setAllSectionsVisibility(false)
@@ -86,6 +93,7 @@ class DiagnoseResultActivity : AppCompatActivity() {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
+    @Suppress("UNUSED_PARAMETER")
     fun onBackButtonClick(view: View) {
         finish()
     }

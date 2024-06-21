@@ -50,7 +50,7 @@
             android:layout_marginTop="70dp"
             android:background="@drawable/bg_circle"
             android:padding="10dp"
-            android:src="@drawable/chamber_cat"
+            android:src="@drawable/profile_picture"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout1" />
@@ -77,6 +77,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_user_name">
 
             <TextView
+                android:id="@+id/tv_user_email"
                 style="@style/TextContent.Regular.Small"
                 android:text="@string/user_email" />
 
@@ -103,7 +104,8 @@
             android:text="@string/log_out"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+            tools:ignore="VisualLintButtonSize" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -31,30 +31,39 @@ class ViewModelFactory(
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(userRepository) as T
             }
+
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
                 RegisterViewModel(userRepository) as T
             }
+
             modelClass.isAssignableFrom(NewsViewModel::class.java) -> {
                 NewsViewModel(newsRepository) as T
             }
+
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
                 HomeViewModel(newsRepository, userRepository, diagnoseRepository) as T
             }
+
             modelClass.isAssignableFrom(DiagnoseViewModel::class.java) -> {
                 DiagnoseViewModel(symptomsRepository, diagnoseRepository) as T
             }
+
             modelClass.isAssignableFrom(DiagnoseSearchViewModel::class.java) -> {
                 DiagnoseSearchViewModel(symptomsRepository) as T
             }
+
             modelClass.isAssignableFrom(DiagnoseResultViewModel::class.java) -> {
-                DiagnoseResultViewModel(diagnoseRepository) as T
+                DiagnoseResultViewModel(diagnoseRepository, userRepository) as T
             }
+
             modelClass.isAssignableFrom(HistoryViewModel::class.java) -> {
                 HistoryViewModel(diagnoseRepository) as T
             }
+
             modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
                 ProfileViewModel(userRepository) as T
             }
+
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }

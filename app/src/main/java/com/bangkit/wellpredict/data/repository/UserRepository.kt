@@ -88,9 +88,8 @@ class UserRepository(
         fun getInstance(
             wellPredictApiService: WellPredictApiService,
             userPreference: UserPreference,
-        ): UserRepository =
-            instance ?: synchronized(this) {
-                instance ?: UserRepository(wellPredictApiService, userPreference)
-            }.also { instance = it }
+        ): UserRepository = instance ?: synchronized(this) {
+            instance ?: UserRepository(wellPredictApiService, userPreference)
+        }.also { instance = it }
     }
 }
