@@ -47,12 +47,13 @@ class LoginActivity : AppCompatActivity() {
                         is ResultState.Success -> {
                             val accessToken = result.data.data?.accesToken.toString()
                             val refreshToken = result.data.data?.refreshToken.toString()
-                            viewModel.saveSession(User(email, accessToken, refreshToken))
+                            val name = result.data.data?.name.toString()
+                            viewModel.saveSession(User(name,email, accessToken, refreshToken))
                             startActivity(Intent(this, MainActivity::class.java))
                             Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
                         }
                         is ResultState.Error -> {
-                            val error = result.error.toString()
+                            val error = result.error
                             Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
                         }
                     }

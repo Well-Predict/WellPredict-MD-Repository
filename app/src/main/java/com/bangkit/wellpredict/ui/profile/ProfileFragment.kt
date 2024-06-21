@@ -36,14 +36,18 @@ class ProfileFragment : Fragment() {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        setupProfile()
+
         binding.btnLogout.setOnClickListener { logoutDialog() }
 
         return root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun setupProfile() {
+        viewModel.getSession().observe(viewLifecycleOwner) { user ->
+            binding.tvUserName.text = user.name
+            binding.tvUserEmail.text = user.email
+        }
     }
 
     private fun logoutDialog() {
@@ -86,5 +90,10 @@ class ProfileFragment : Fragment() {
                 }
             })
             .show()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

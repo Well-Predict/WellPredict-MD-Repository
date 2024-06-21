@@ -52,8 +52,12 @@ class DiagnoseRepository(
         try {
             val successResponse = wellPredictApiService.getHistories()
             val firstHistory = successResponse.historyItem?.firstOrNull()
+            if (firstHistory != null) {
+                emit(ResultState.Success(firstHistory))
+            } else {
+                emit(ResultState.Error("No history found"))
+            }
             Log.d(TAG, "getFirstHistory: $firstHistory")
-            emit(ResultState.Success(firstHistory))
         } catch (e: HttpException) {
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, ErrorResponse::class.java)

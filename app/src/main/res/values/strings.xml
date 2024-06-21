@@ -65,5 +65,5 @@
     <string name="search_symptoms">Search Symptoms</string>
     <string name="hidden_password">***********</string>
     <string name="splash_screen_image">Splash Screen Image</string>
-
+    <string name="no_history">Sorry, you don\'t have any previous diagnosis history</string>
 </resources>

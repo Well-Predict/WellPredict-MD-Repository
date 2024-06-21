@@ -44,14 +44,10 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        viewModel.getSession().observe(viewLifecycleOwner) { user ->
-            if (!user.isLogin) {
-                startActivity(Intent(requireContext(), LoginActivity::class.java))
-            }
-        }
         shimmerNewsFrameLayout = binding.cvShimmerNews
         shimmerHistoryFrameLayout = binding.cvShimmerHistory
 
+        checkUserIsLogin()
         setupNewsCard()
         setupHistoryCard()
         setupSeeAllOnClickHandler(binding.tvNewsSeeAll, NewsActivity::class.java)
@@ -62,6 +58,15 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun checkUserIsLogin(){
+        viewModel.getSession().observe(viewLifecycleOwner) { user ->
+            if (!user.isLogin) {
+                startActivity(Intent(requireContext(), LoginActivity::class.java))
+            }
+            binding.tvUserName.text = user.name
+        }
     }
 
     private fun setupNewsCard() {
@@ -98,32 +103,35 @@ class HomeFragment : Fragment() {
 
     private fun setupHistoryCard() {
         viewModel.getHistoryFirst().observe(viewLifecycleOwner) { result ->
-            if (result != null) {
-                when (result) {
-                    is ResultState.Loading -> {
-                        showHistoryCardLoading(true, binding.diagnoseHistoryCard)
-                    }
+            when (result) {
+                is ResultState.Loading -> {
+                    // Sembunyikan history card dan empty title saat loading
+                    binding.diagnoseHistoryCard.visibility = View.INVISIBLE
+                    binding.tvDiagnoseHistoryEmptyTitle.visibility = View.GONE
+                    showHistoryCardLoading(true)
+                }
 
-                    is ResultState.Success -> {
-                        showHistoryCardLoading(false, binding.diagnoseHistoryCard)
+                is ResultState.Success -> {
+                    // Tampilkan history card dan sembunyikan empty title serta shimmer saat sukses
+                    binding.tvDiagnoseHistoryEmptyTitle.visibility = View.GONE
+                    showHistoryCardLoading(false)
 
-                        binding.tvDiseaseTitle.text = result.data?.disease
-                        binding.tvDiseaseDate.text = result.data?.createdAt?.let {
-                            DateHelper.formatDateToLocal(
-                                it
-                            )
-                        }
-                        result.data?.let { diagnoseCardOnClickHandler(it) }
-                    }
+                    binding.diagnoseHistoryCard.visibility = View.VISIBLE
+                    binding.tvDiseaseTitle.text = result.data.disease
+                    binding.tvDiseaseDate.text = result.data.createdAt?.let { DateHelper.formatDateToLocal(it) }
+                    diagnoseCardOnClickHandler(result.data)
+                }
 
-                    is ResultState.Error -> {
-                        showHistoryCardLoading(true, binding.diagnoseHistoryCard)
-                        showAlert(result.error)
-                    }
+                is ResultState.Error -> {
+                    // Sembunyikan history card, tampilkan empty title dan stop shimmer saat error
+                    binding.diagnoseHistoryCard.visibility = View.GONE
+                    binding.tvDiagnoseHistoryEmptyTitle.visibility = View.VISIBLE
+                    showHistoryCardLoading(false)
                 }
             }
         }
     }
+
 
     private fun setupSeeAllOnClickHandler(view: View, targetActivity: Class<out Activity>) {
         view.setOnClickListener {
@@ -164,15 +172,13 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun showHistoryCardLoading(isLoading: Boolean, targetLayout: View) {
+    private fun showHistoryCardLoading(isLoading: Boolean) {
         if (isLoading) {
-            targetLayout.visibility = View.INVISIBLE
-            shimmerNewsFrameLayout.visibility = View.VISIBLE
-            shimmerNewsFrameLayout.startShimmer()
+            shimmerHistoryFrameLayout.visibility = View.VISIBLE
+            shimmerHistoryFrameLayout.startShimmer()
         } else {
-            shimmerNewsFrameLayout.stopShimmer()
-            shimmerNewsFrameLayout.visibility = View.GONE
-            targetLayout.visibility = View.VISIBLE
+            shimmerHistoryFrameLayout.stopShimmer()
+            shimmerHistoryFrameLayout.visibility = View.GONE
         }
     }
 
