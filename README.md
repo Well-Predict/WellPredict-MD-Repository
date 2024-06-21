@@ -5,7 +5,7 @@ Well Predict is an Application used for the user to pre-diagnose their possible 
 To install our Application, you can download the debugged version on [here](#tests).
 
 ## Features 
-- Aunthentication with Hash Protection.
+- Safe Aunthentication.
 - Disease Precognition using our Latest trained AI Model.
 - Latest Medical Articles.
 - User Friendly.
@@ -18,5 +18,5 @@ Our Application was built with :
 - [Shimmer](#test) - A library used to add shimmer effects.
 - [CircleImageView](#test) - Used as an additional View on our Profile Page.
 - [LoopJ](#test) - To handle asynchronous HTTP requests.
-
+- [Flexbox](test) - Library used to reconstruct CSS Flexbox to Android.
   
