@@ -12,7 +12,7 @@ To install our Application, you can download the debugged version on [here](#tes
 
 ## Libraries
 Our Application was built with :
-- [Retrofit](#test) - Used for initiating the connection between our Application with the API.
+- [Retrofit](https://github.com/square/retrofit) - Used for initiating the connection between our Application with the API.
 - [Glide](#test) - An Awesome library used to fetch online images.
 - [Lottie](#test) - To parse animations from Adobe After Effect exported as JSON and renders them natively on Mobile.
 - [Shimmer](#test) - A library used to add shimmer effects.
